@@ -5,6 +5,10 @@ class EzeeyColors {
 
   static const Color white = Color(0xFFFFFFFF);
 
+  static const Color bckgrnd = Color(0x439B84);
+
+  static const Color trans = Color.fromRGBO(190, 194, 194, 0.54);
+
   static const Color initial = Color.fromRGBO(23, 43, 77, 1.0);
 
   static const Color primary = Color.fromRGBO(94, 114, 228, 1.0);

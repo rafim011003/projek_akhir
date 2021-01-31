@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
           ),
           currentAccountPicture: new CircleAvatar(
             backgroundImage: NetworkImage(
-                "https://www.codemate.com/wp-content/uploads/2016/02/flutter-logo-round.png"),
+                "https://www.elfitrafarm.com/wp-content/uploads/2020/01/id-cs4.png"),
           ),
           decoration: BoxDecoration(color: Colors.cyan),
         ),
@@ -74,42 +74,47 @@ class _HomeState extends State<Home> {
                 ListTile(
                   leading: Icon(
                     Icons.home,
-                    color: EzeeyColors.primary,
                   ),
                   title: Text('Home'),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MainBoarding()));
+                  },
                 ),
                 ListTile(
                   leading: Icon(
                     Icons.pie_chart,
-                    color: EzeeyColors.warning,
                   ),
                   title: Text('Pelajaran'),
                 ),
                 ListTile(
-                  leading: Icon(Icons.edit_road, color: EzeeyColors.info),
+                  leading: Icon(Icons.edit_road),
                   title: Text('Tugas'),
                 ),
                 ListTile(
                   leading: Icon(
                     Icons.book_rounded,
-                    color: EzeeyColors.error,
                   ),
                   title: Text('Halaqoh'),
                 ),
                 ListTile(
-                  leading: Icon(Icons.notifications_active_rounded,
-                      color: EzeeyColors.text),
+                  leading: Icon(
+                    Icons.notifications_active_rounded,
+                  ),
                   title: Text('Pengumuman'),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Pengumuman()));
+                  },
                 ),
                 ListTile(
-                  leading:
-                      Icon(Icons.account_circle, color: EzeeyColors.primary),
+                  leading: Icon(Icons.account_circle),
                   title: Text('Profile'),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProfileScreen()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Profil()));
                   },
                 ),
 
@@ -120,7 +125,7 @@ class _HomeState extends State<Home> {
                 //   //   if (currentPage != "Home")
                 //   //     Navigator.pushReplacementNamed(context, '/home');
                 //   // },
-                //   iconColor: EzeeyColors.primary,
+                //   iconprimary,
 
                 //   // isSelected: currentPage == "Home" ? true : false),
                 // ),
