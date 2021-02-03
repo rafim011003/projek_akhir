@@ -48,7 +48,15 @@ class _Tugas extends State<Tugas> {
                     bottomLeft: const Radius.circular(70.0),
                   )),
             ),
-            Container(),
+            Container(
+              padding: EdgeInsets.only(left: 40, top: 10),
+              child: Text("Tugas Harian",
+                  style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white)),
+            ),
           ],
         ),
       ),

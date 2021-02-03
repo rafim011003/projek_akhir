@@ -38,10 +38,10 @@ class _Pengumuman extends State<Pengumuman> {
               margin: EdgeInsets.only(top: 20, bottom: 20),
               height: 280.0,
               width: 495,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/img/gabisa.png"),
-                      fit: BoxFit.cover)),
+              // decoration: BoxDecoration(
+              //     image: DecorationImage(
+              //         image: AssetImage("assets/img/gabisa.png"),
+              //         fit: BoxFit.cover)),
             ),
             Container(
               height: height,

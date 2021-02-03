@@ -103,12 +103,7 @@ class _HomeState extends State<Home> {
                         MaterialPageRoute(builder: (context) => Tugas()));
                   },
                 ),
-                ListTile(
-                  leading: Icon(
-                    Icons.book_rounded,
-                  ),
-                  title: Text('Halaqoh'),
-                ),
+
                 ListTile(
                   leading: Icon(
                     Icons.notifications_active_rounded,

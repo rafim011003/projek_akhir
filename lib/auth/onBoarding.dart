@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'loginAdmin.dart';
 // import 'package:projek_akhir/user/ui/home.dart';
 import 'login.dart';
 // import 'package:project_coba/network_utils/api.dart';
@@ -120,7 +121,7 @@ class onBoardingState extends State<OnBoarding> {
                 "The biggest e-learning in Jonggol",
                 style: TextStyle(
                     fontSize: 20,
-                    fontFamily: 'Alegreya',
+                    fontFamily: 'Poppins',
                     fontWeight: FontWeight.normal,
                     color: Colors.white),
               ),
@@ -138,10 +139,10 @@ class onBoardingState extends State<OnBoarding> {
                       textDirection: TextDirection.ltr,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20.0,
+                          fontSize: 15.0,
                           decoration: TextDecoration.none,
                           fontWeight: FontWeight.normal,
-                          fontFamily: "Alegreya"),
+                          fontFamily: "Poppins"),
                     ),
                   ),
                   color: Colors.teal[300],
@@ -160,6 +161,37 @@ class onBoardingState extends State<OnBoarding> {
                   },
                 ),
               ),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      // Container(
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.only(top: 20),
+                      //     child: InkWell(
+                      //       onTap: () {
+                      //         Navigator.push(
+                      //             context,
+                      //             new MaterialPageRoute(
+                      //                 builder: (context) => LoginAdmin()));
+                      //       },
+                      //       child: Text(
+                      //         'Sign up',
+                      //         style: TextStyle(
+                      //             color: Colors.white,
+                      //             fontSize: 15.0,
+                      //             decoration: TextDecoration.none,
+                      //             fontWeight: FontWeight.bold,
+                      //             fontFamily: "Poppins"),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // )
+                    ],
+                  ),
+                ],
+              )
+
               // Container(
               //   child: RaisedButton(
               //     child: Padding(
