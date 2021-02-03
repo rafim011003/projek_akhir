@@ -63,7 +63,7 @@ class _HomeState extends State<Home> {
             backgroundImage: NetworkImage(
                 "https://www.elfitrafarm.com/wp-content/uploads/2020/01/id-cs4.png"),
           ),
-          decoration: BoxDecoration(color: Colors.cyan),
+          decoration: BoxDecoration(color: Colors.teal[300]),
         ),
         Container(
           child: Expanded(
@@ -87,11 +87,21 @@ class _HomeState extends State<Home> {
                   leading: Icon(
                     Icons.pie_chart,
                   ),
-                  title: Text('Pelajaran'),
+                  title: Text('Jadwal Pelajaran'),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => JadwalPelajaran()));
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.edit_road),
                   title: Text('Tugas'),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Tugas()));
+                  },
                 ),
                 ListTile(
                   leading: Icon(
@@ -177,6 +187,35 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
+        // Row(
+        //   mainAxisAlignment: CrossAxisAlignment.center,
+        //   children: [
+        //     Icon(
+        //       Icons.settings,
+        //       color: Colors.white,
+        //     ),
+        //     SizedBox(
+        //       width: 10,
+        //     ),
+        //     Text(
+        //       'Settings',
+        //       style: TextStyle(
+        //           color: Colors.blueGrey[800], fontWeight: FontWeight.bold),
+        //     ),
+        //     SizedBox(
+        //       width: 10,
+        //     ),
+        //     Container(width: 2, height: 20, color: Colors.blueGrey[800]),
+        //     SizedBox(
+        //       width: 10,
+        //     ),
+        //     Text(
+        //       'Log out',
+        //       style: TextStyle(
+        //           color: Colors.blueGrey[800], fontWeight: FontWeight.bold),
+        //     )
+        //   ],
+        // )
       ]),
     ));
   }

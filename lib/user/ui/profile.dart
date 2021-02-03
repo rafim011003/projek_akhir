@@ -6,23 +6,28 @@ class Profil extends StatefulWidget {
 }
 
 class _Profile extends State<Profil> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     // TODO: implement build
     return Scaffold(
+      key: _scaffoldKey,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: Icon(Icons.menu_rounded),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
-        ),
-        title: Text(
-          "App",
-          style: TextStyle(fontFamily: "Poppins"),
-        ),
+        leading: IconButton(
+            icon: Icon(
+              Icons.menu,
+              size: 30,
+            ),
+            onPressed: () => _scaffoldKey.currentState.openDrawer()),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(icon: Icon(Icons.search, size: 30), onPressed: () {})
+        ],
       ),
       drawer: Home(),
       body: Stack(

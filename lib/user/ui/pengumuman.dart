@@ -14,17 +14,21 @@ class _Pengumuman extends State<Pengumuman> {
     // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.teal[300],
+      key: _scaffoldKey,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: Icon(Icons.menu_rounded),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
-        ),
-        title: Text(
-          "App",
-          style: TextStyle(fontFamily: "Poppins"),
-        ),
+        leading: IconButton(
+            icon: Icon(
+              Icons.menu,
+              size: 30,
+            ),
+            onPressed: () => _scaffoldKey.currentState.openDrawer()),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(icon: Icon(Icons.search, size: 30), onPressed: () {})
+        ],
       ),
       drawer: Home(),
       body: SingleChildScrollView(
@@ -35,14 +39,8 @@ class _Pengumuman extends State<Pengumuman> {
               height: 280.0,
               width: 495,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: const Radius.circular(10.0),
-                    topRight: const Radius.circular(10.0),
-                    bottomLeft: const Radius.circular(10.0),
-                    bottomRight: const Radius.circular(10.0),
-                  ),
                   image: DecorationImage(
-                      image: AssetImage("assets/img/gojek1.png"),
+                      image: AssetImage("assets/img/gabisa.png"),
                       fit: BoxFit.cover)),
             ),
             Container(
@@ -50,8 +48,7 @@ class _Pengumuman extends State<Pengumuman> {
               width: width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(40.0),
-                  topRight: const Radius.circular(40.0),
+                  topRight: const Radius.circular(50.0),
                 ),
                 color: Colors.white,
               ),
@@ -59,9 +56,9 @@ class _Pengumuman extends State<Pengumuman> {
                 padding: EdgeInsets.only(left: 40, top: 10),
                 child: Text("Pengumuman",
                     style: TextStyle(
-                      fontFamily: "Alegreya",
-                      fontSize: 30,
-                    )),
+                        fontFamily: "Poppins",
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold)),
               ),
             ),
             Container(

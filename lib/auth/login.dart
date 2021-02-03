@@ -222,6 +222,7 @@ class _LoginState extends State<Login> {
                                     ),
                                   ),
                                   color: Colors.teal[300],
+                                  splashColor: Colors.teal[100],
                                   disabledColor: Colors.grey,
                                   shape: new RoundedRectangleBorder(
                                       borderRadius:
