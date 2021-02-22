@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'loginAdmin.dart';
+import 'signUp.dart';
 // import 'package:projek_akhir/user/ui/home.dart';
-import 'login.dart';
+import 'signIn.dart';
 // import 'package:project_coba/network_utils/api.dart';
 import 'package:project_coba/user/ui/uis.dart';
 import 'package:project_coba/user/viewModels/view_models.dart';
@@ -152,7 +152,7 @@ class onBoardingState extends State<OnBoarding> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Login()),
+                      MaterialPageRoute(builder: (context) => SignIn()),
                     );
                     // if (_formKey.currentState.validate()) {
                     //   login();

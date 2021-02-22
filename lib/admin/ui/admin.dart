@@ -58,7 +58,7 @@ class _AdminState extends State<Admin> {
                   setState(() {
                     Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => Login()),
+                      MaterialPageRoute(builder: (context) => SignIn()),
                       (Route<dynamic> route) => false,
                     );
                   });

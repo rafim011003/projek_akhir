@@ -21,25 +21,49 @@ class _MainBoardingState extends State<MainBoarding> {
     // TODO: implement build
     return Scaffold(
       key: _scaffoldKey,
-      // floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
-      // floatingActionButton: FloatingActionButton(
-      //   // materialTapTargetSize: ,
-      //   backgroundColor: Colors.white38,
-      //   hoverColor: Colors.grey,
-      //   child: Icon(Icons.menu),
-      //   onPressed: () => _scaffoldKey.currentState.openDrawer(),
-      // ),
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        leading: IconButton(
-            icon: Icon(Icons.menu, size: 30),
-            onPressed: () => _scaffoldKey.currentState.openDrawer()),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          IconButton(icon: Icon(Icons.search, size: 30), onPressed: () {})
-        ],
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, 100),
+        child: SafeArea(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                margin:
+                    new EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                height: 44,
+                width: 44,
+                child: FlatButton(
+                  padding: EdgeInsets.all(0),
+                  color: Colors.white.withOpacity(0.3),
+                  child: Icon(Icons.menu, color: Colors.white),
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0),
+                  ),
+                  onPressed: () => _scaffoldKey.currentState.openDrawer(),
+                ),
+              ),
+              Container(
+                margin: new EdgeInsets.symmetric(
+                    horizontal: EzeeyColors.mainPadding,
+                    vertical: EzeeyColors.mainPadding),
+                height: 44,
+                width: 44,
+                child: FlatButton(
+                  padding: EdgeInsets.all(0),
+                  color: Colors.white.withOpacity(0.3),
+                  child: Icon(Icons.search, color: Colors.white),
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0),
+                  ),
+                  onPressed: () {
+                    debugPrint("Menu Pressed");
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       drawer: Home(),
       body: Scaffold(
@@ -78,7 +102,7 @@ class _MainBoardingState extends State<MainBoarding> {
               ),
               SizedBox(height: 30),
               Container(
-                height: height,
+                height: height * 1.5,
                 width: width,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -351,70 +375,263 @@ class _MainBoardingState extends State<MainBoarding> {
                       height: 150,
                       width: 420,
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: const Radius.circular(10.0),
-                            topRight: const Radius.circular(10.0),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: const Radius.circular(10.0),
+                          topRight: const Radius.circular(10.0),
+                        ),
+                        image: DecorationImage(
+                            image: AssetImage(
+                              "assets/img/covid.jpg",
+                            ),
+                            fit: BoxFit.cover),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 10),
                           ),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                "assets/img/covid.jpg",
-                              ),
-                              fit: BoxFit.cover)),
+                        ],
+                      ),
                     ),
                     Container(
-                      height: 50,
+                      height: 65,
                       width: 420,
                       decoration: BoxDecoration(
-                        color: Colors.grey[350],
+                        color: Colors.blueGrey[50],
                         borderRadius: BorderRadius.only(
                           bottomLeft: const Radius.circular(10.0),
                           bottomRight: const Radius.circular(10.0),
                         ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 10),
+                          ),
+                        ],
                       ),
                       child: Padding(
                         padding: EdgeInsets.all(2.5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Ujian Tengah Semester",
-                                style: TextStyle(
-                                  fontFamily: "Poppins",
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Colors.grey[850],
-                                )),
-                            SizedBox(
-                              height: 5,
+                            Container(
+                              margin: EdgeInsets.all(5),
+                              child: Text("Ujian Tengah Semester",
+                                  style: TextStyle(
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Colors.grey[850],
+                                  )),
                             ),
-                            Text(
-                              "Ujian tengah semester berlangsung ...",
-                              style: TextStyle(
-                                color: Colors.grey[850],
-                                fontFamily: "Poppins",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 11,
-                              ),
-                            )
+                            Container(
+                              margin: EdgeInsets.only(left: 5),
+                              child: Text("Ujian akan di laksanakan pada...",
+                                  style: TextStyle(
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 11,
+                                    color: Colors.grey[850],
+                                  )),
+                            ),
                           ],
                         ),
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 20),
-                      height: 200,
+                      height: 220,
                       width: 420,
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: const Radius.circular(20.0),
-                            topRight: const Radius.circular(20.0),
-                            bottomLeft: const Radius.circular(20.0),
-                            bottomRight: const Radius.circular(20.0),
+                        borderRadius: BorderRadius.only(
+                          topLeft: const Radius.circular(10.0),
+                          topRight: const Radius.circular(10.0),
+                        ),
+                        image: DecorationImage(
+                            image: AssetImage(
+                              "assets/img/utbk.jpg",
+                            ),
+                            fit: BoxFit.cover),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 10),
                           ),
-                          image: DecorationImage(
-                              image: AssetImage("assets/img/esl.png"),
-                              fit: BoxFit.cover)),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 65,
+                      width: 420,
+                      decoration: BoxDecoration(
+                        color: Colors.blueGrey[50],
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: const Radius.circular(10.0),
+                          bottomRight: const Radius.circular(10.0),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 10),
+                          ),
+                        ],
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(2.5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.all(5),
+                              child: Text("Bimbel Latihan UTBK",
+                                  style: TextStyle(
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Colors.grey[850],
+                                  )),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 5),
+                              child: Text("Pendaftaran bisa melalui...",
+                                  style: TextStyle(
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 11,
+                                    color: Colors.grey[850],
+                                  )),
+                            ),
+                            // Text("Ujian Tengah Semester",
+                            //     style: TextStyle(
+                            //       fontFamily: "Poppins",
+                            //       fontWeight: FontWeight.bold,
+                            //       fontSize: 16,
+                            //       color: Colors.grey[850],
+                            //     )),
+                            // SizedBox(
+                            //   height: 5,
+                            // ),
+                            // Text(
+                            //   "Ujian tengah semester berlangsung ...",
+                            //   style: TextStyle(
+                            //     color: Colors.grey[850],
+                            //     fontFamily: "Poppins",
+                            //     fontWeight: FontWeight.bold,
+                            //     fontSize: 11,
+                            //   ),
+                            // )
+                          ],
+                        ),
+                      ),
+                    ),
+                    new Container(
+                      child: new Material(
+                        child: new InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Pengumuman()));
+                          },
+                        ),
+                      ),
+                      margin: EdgeInsets.only(top: 20),
+                      height: 220,
+                      width: 419,
+                      decoration: BoxDecoration(
+                        color: Colors.blueGrey[900],
+                        borderRadius: BorderRadius.only(
+                          topLeft: const Radius.circular(10.0),
+                          topRight: const Radius.circular(10.0),
+                        ),
+                        image: DecorationImage(
+                            image: AssetImage(
+                              "assets/img/toiec.jpg",
+                            ),
+                            fit: BoxFit.cover),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 10),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 65,
+                      width: 420,
+                      decoration: BoxDecoration(
+                        color: Colors.blueGrey[50],
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: const Radius.circular(10.0),
+                          bottomRight: const Radius.circular(10.0),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 10),
+                          ),
+                        ],
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(2.5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.all(5),
+                              child: Text("Toeic SMK MADINATUL QURAN",
+                                  style: TextStyle(
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Colors.grey[850],
+                                  )),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 5),
+                              child: Text("Pendaftaran bisa melalui...",
+                                  style: TextStyle(
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 11,
+                                    color: Colors.grey[850],
+                                  )),
+                            ),
+                            // Text("Ujian Tengah Semester",
+                            //     style: TextStyle(
+                            //       fontFamily: "Poppins",
+                            //       fontWeight: FontWeight.bold,
+                            //       fontSize: 16,
+                            //       color: Colors.grey[850],
+                            //     )),
+                            // SizedBox(
+                            //   height: 5,
+                            // ),
+                            // Text(
+                            //   "Ujian tengah semester berlangsung ...",
+                            //   style: TextStyle(
+                            //     color: Colors.grey[850],
+                            //     fontFamily: "Poppins",
+                            //     fontWeight: FontWeight.bold,
+                            //     fontSize: 11,
+                            //   ),
+                            // )
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),

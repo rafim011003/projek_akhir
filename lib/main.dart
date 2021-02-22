@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_coba/auth/login.dart';
+import 'package:project_coba/auth/signIn.dart';
 import 'package:project_coba/splashscreen.dart';
 import 'user/ui/uis.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,7 +47,7 @@ class _CheckAuthState extends State<CheckAuth> {
     if (isAuth) {
       child = MainBoarding();
     } else {
-      child = Login();
+      child = SignIn();
     }
     return Scaffold(
       body: child,

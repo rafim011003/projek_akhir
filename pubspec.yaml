@@ -33,6 +33,10 @@ dependencies:
   flutter_swiper: ^1.1.6
   scrolling_page_indicator: ^0.1.2
   carousel_slider: ^3.0.0
+  google_fonts: ^0.3.10
+  percent_indicator: "^2.1.1"
+  animated_splash_screen: ^1.0.1+2
+  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -77,29 +81,7 @@ flutter:
   assets:
     - assets/icon/icon.png
     - assets/img/
-    # - assets/img/bckgrn.png
-    # - assets/img/indon.jpg
-    # - assets/img/logo.png
-    # - assets/img/bckgrn1.png
-    # - assets/img/daon.png
-    # - assets/img/Group.png
-    # - assets/img/axioo.png
-    # - assets/img/axioo1.png
-    # - assets/img/covid.jpg
-    # - assets/img/girls.jpg
-    # - assets/img/mens.jpg
-    # - assets/img/two.jpg
-    # - assets/img/gojek.png
-    # - assets/img/smk.jpg
-    # - assets/img/sweater.jpg
-    # - assets/img/5251.jpg
-    # - assets/img/5251.png
-    # - assets/img/uber.jpg
-    # - assets/img/mtk.png
-    # - assets/img/flutter.png
-    # - assets/img/flutter1.png
-    # - assets/img/english.jpg
-    # - assets/img/react.png
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

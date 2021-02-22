@@ -12,6 +12,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 // import 'package:html/dom.dart';
 import 'package:project_coba/size_helper.dart';
 import 'package:project_coba/user/ui/data.dart';
+import 'package:project_coba/widgets/card_courses.dart';
 // import 'package:geolocator/geolocator.dart';
 import 'dart:ui';
 
@@ -22,6 +23,7 @@ import 'package:project_coba/widgets/theme.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:project_coba/widgets/theme.dart';
 import 'package:project_coba/user/models/intro.dart';
+
 // import 'package:flutter/material.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 

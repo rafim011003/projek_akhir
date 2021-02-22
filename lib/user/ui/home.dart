@@ -48,23 +48,23 @@ class _HomeState extends State<Home> {
 
     return Drawer(
         child: Container(
-      color: Colors.white,
+      color: Colors.teal[100],
       child: Column(children: [
-        UserAccountsDrawerHeader(
-          accountName: new Text(
-            "Byhuuuund",
-            style: TextStyle(fontFamily: "Poppins", fontSize: 15),
+        Container(
+          padding: EdgeInsets.only(top: 25),
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundImage: NetworkImage(
+                  "https://www.kindpng.com/picc/m/80-807947_transparent-crazy-man-png-man-png-download.png"),
+              radius: 40,
+            ),
+            title: Text("Loremipsumdolar",
+                style: TextStyle(fontFamily: "Poppins", fontSize: 15)),
+            subtitle: Text("Loremipsum@mq.com",
+                style: TextStyle(fontFamily: "Poppins", fontSize: 15)),
           ),
-          accountEmail: new Text(
-            "Byhuuuund@gmail.com",
-            style: TextStyle(fontFamily: "Poppins", fontSize: 13),
-          ),
-          currentAccountPicture: new CircleAvatar(
-            backgroundImage: NetworkImage(
-                "https://www.elfitrafarm.com/wp-content/uploads/2020/01/id-cs4.png"),
-          ),
-          decoration: BoxDecoration(color: Colors.teal[300]),
         ),
+
         Container(
           child: Expanded(
             flex: 2,
