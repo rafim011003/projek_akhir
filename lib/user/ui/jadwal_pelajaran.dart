@@ -60,68 +60,166 @@ class _JadwalPelajaran extends State<JadwalPelajaran> {
         ),
       ),
       drawer: Home(),
-      body: SafeArea(
-          child: Container(
-        color: Colors.teal[300],
-        padding: EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
         child: Column(
-          children: <Widget>[
-            topRow(),
-            SizedBox(),
-            Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: List.generate(6, (index) => dateWidget())),
-            ),
-            SizedBox(height: 10),
-            SingleChildScrollView(
-              child: Container(
-                height: height * 2,
-                width: width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.white,
-                ),
-                child: Column(children: [
-                  Text("7:00",
-                      style: TextStyle(
-                        fontFamily: "Poppins",
-                        color: Colors.grey[600],
-                      )),
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: 70),
+              height: height + 200,
+              child: Column(
+                children: [
                   Container(
-                    height: 2.0,
-                    width: 140.0,
-                    color: Color(0xffd1d3d9),
+                    height: 250,
+                    padding: EdgeInsets.all(16.0),
+                    child: Column(
+                      children: <Widget>[
+                        topRow(),
+                        SizedBox(),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: List.generate(
+                                  7,
+                                  (index) => dateWidget(
+                                        index: index,
+                                      ))),
+                        ),
+                      ],
+                    ),
                   ),
                   Container(
-                    height: 2.0,
-                    width: 40.0,
-                    color: Color(0xffd1d3d9),
+                    height: height - 120,
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: const Radius.circular(30),
+                          topRight: const Radius.circular(30)),
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                        children: List.generate(4, (index) => cardWidget())),
                   ),
-                  Container(
-                    height: 2.0,
-                    width: 100.0,
-                    color: Color(0xffd1d3d9),
-                  ),
-                ]),
+                ],
               ),
             ),
           ],
         ),
-      )),
+      ),
     );
   }
 }
 
+class cardWidget extends StatelessWidget {
+  const cardWidget({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Column(children: [
+          Text("7:00",
+              style: TextStyle(
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.grey[600],
+              )),
+          lineGen(
+            lines: [20.0, 30.0, 40.0, 10.0, 60.0],
+          ),
+        ]),
+        Expanded(
+          child: Container(
+            margin: EdgeInsets.only(left: 40),
+            height: 145.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.teal,
+            ),
+            child: Container(
+              margin: EdgeInsets.only(left: 5),
+              height: 145.0,
+              padding: EdgeInsets.only(left: 16.0, top: 8.0),
+              color: Colors.white70,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 21.0,
+                    child: Row(
+                      children: [
+                        Text(
+                          '07:00 - 08:30',
+                          style: TextStyle(
+                              fontFamily: "Poppins",
+                              fontSize: 15,
+                              color: Colors.blueGrey[800]),
+                        ),
+                        VerticalDivider(
+                          color: Colors.black,
+                        ),
+                        Text(
+                          'Morning',
+                          style: TextStyle(
+                              fontFamily: "Poppins",
+                              fontSize: 15,
+                              color: Colors.blueGrey[800]),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Text('Bahasa Indonesia',
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontSize: 21.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey[800],
+                      )),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class lineGen extends StatelessWidget {
+  final lines;
+  const lineGen({Key key, this.lines}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: List.generate(
+            5,
+            (index) => Container(
+                  height: 2.0,
+                  width: lines[index],
+                  color: Colors.teal[100],
+                  margin: EdgeInsets.symmetric(vertical: 14.0),
+                )));
+  }
+}
+
 class dateWidget extends StatefulWidget {
+  final index;
+
+  const dateWidget({Key key, this.index}) : super(key: key);
   @override
   _dateWidgetState createState() => _dateWidgetState();
 }
 
 class _dateWidgetState extends State<dateWidget> {
   bool _selectDate = true;
-
+  var list = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -136,17 +234,17 @@ class _dateWidgetState extends State<dateWidget> {
             ? null
             : BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(7)),
-                color: Colors.white60,
+                color: Colors.greenAccent,
               ),
         child: Column(
           children: [
-            Text("Mon",
+            Text(list[widget.index],
                 style: TextStyle(
                     fontFamily: "Poppins",
                     fontWeight:
                         _selectDate ? FontWeight.normal : FontWeight.bold,
                     color: _selectDate ? Colors.white : Colors.white)),
-            Text("10",
+            Text("${10 + widget.index}",
                 style: TextStyle(
                     fontFamily: "Poppins",
                     fontWeight:
@@ -236,3 +334,44 @@ class topRow extends StatelessWidget {
     );
   }
 }
+// Container(
+//   height: height - 325,
+//   margin: EdgeInsets.only(top: 20),
+//   padding: EdgeInsets.all(20),
+//   decoration: BoxDecoration(
+//     borderRadius: BorderRadius.circular(10),
+//     color: Colors.white,
+//   ),
+//   child: SingleChildScrollView(
+//     child: Column(
+//       children: [
+//         Row(
+//           mainAxisAlignment: MainAxisAlignment.start,
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             Column(children: [
+//               Text("7:00",
+//                   style: TextStyle(
+//                     fontFamily: "Poppins",
+//                     fontWeight: FontWeight.bold,
+//                     fontSize: 20,
+//                     color: Colors.grey[600],
+//                   )),
+//               lineGen(
+//                 lines: [20.0, 30.0, 40.0, 10.0],
+//               ),
+//             ]),
+//             Expanded(
+//               child: Container(
+//                 margin: EdgeInsets.only(left: 25),
+//                 height: 100.0,
+//                 width: 100.0,
+//                 color: Colors.red,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ],
+//     ),
+//   ),
+// ),

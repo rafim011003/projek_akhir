@@ -64,7 +64,6 @@ class _Tugas extends State<Tugas> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 10),
               height: height * 1.1,
               child: Column(
                 children: [
@@ -88,51 +87,46 @@ class _Tugas extends State<Tugas> {
                             color: Colors.white)),
                   ),
                   ListView(
-                      padding: EdgeInsets.all(30),
-                      scrollDirection: Axis.vertical,
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      children: List.generate(7, (index) => ezeeyApp())),
+                    padding: EdgeInsets.all(30),
+                    scrollDirection: Axis.vertical,
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    children: <Widget>[
+                      EzeeyApp(
+                        image: Image.asset("assets/img/mtk.png",
+                            width: 40, height: 40),
+                        color: EzeeyColors.lightPink,
+                        title: "Adobe XD Prototyping",
+                        hours: "10 hours, 19 lessons",
+                        progress: "25%",
+                        percentage: 0.25,
+                      ),
+                      EzeeyApp(
+                        image: Image.asset("assets/img/fiqih.png",
+                            width: 50, height: 50),
+                        color: EzeeyColors.lightYellow,
+                        title: "Sketch shortcuts and tricks",
+                        hours: "10 hours, 19 lessons",
+                        progress: "50%",
+                        percentage: 0.5,
+                      ),
+                      EzeeyApp(
+                        image: Image.asset("assets/img/icon_3.png",
+                            width: 40, height: 40),
+                        color: EzeeyColors.salmonLight,
+                        title: "UI Motion Design in After Effects",
+                        hours: "10 hours, 19 lessons",
+                        progress: "75%",
+                        percentage: 0.75,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class ezeeyApp extends StatefulWidget {
-  final index;
-  const ezeeyApp({
-    Key key,
-    this.index,
-  }) : super(key: key);
-
-  @override
-  _ezeeyAppState createState() => _ezeeyAppState();
-}
-
-class _ezeeyAppState extends State<ezeeyApp> {
-  var list = [
-    "Matematika",
-    "Bahasa Indonesia",
-    "Bahasa Inggris",
-    "Fiqih",
-    "Aqidah",
-    "Pemograman Web",
-    "Pemograman Android"
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return EzeeyApp(
-      image: Image.asset("assets/img/math.png", width: 40, height: 40),
-      color: Colors.white38,
-      title: "Matematika",
-      hours: "Senin 22 Februari",
-      progress: "25%",
-      percentage: 0.25,
     );
   }
 }

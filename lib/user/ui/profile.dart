@@ -13,21 +13,51 @@ class _Profile extends State<Profil> {
     double height = MediaQuery.of(context).size.height;
     // TODO: implement build
     return Scaffold(
+      backgroundColor: Colors.teal[300],
       key: _scaffoldKey,
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        leading: IconButton(
-            icon: Icon(
-              Icons.menu,
-              size: 30,
-            ),
-            onPressed: () => _scaffoldKey.currentState.openDrawer()),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          IconButton(icon: Icon(Icons.search, size: 30), onPressed: () {})
-        ],
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, 100),
+        child: SafeArea(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                margin:
+                    new EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                height: 44,
+                width: 44,
+                child: FlatButton(
+                  padding: EdgeInsets.all(0),
+                  color: Colors.white.withOpacity(0.3),
+                  child: Icon(Icons.menu, color: Colors.white),
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0),
+                  ),
+                  onPressed: () => _scaffoldKey.currentState.openDrawer(),
+                ),
+              ),
+              Container(
+                margin: new EdgeInsets.symmetric(
+                    horizontal: EzeeyColors.mainPadding,
+                    vertical: EzeeyColors.mainPadding),
+                height: 44,
+                width: 44,
+                child: FlatButton(
+                  padding: EdgeInsets.all(0),
+                  color: Colors.white.withOpacity(0.3),
+                  child: Icon(Icons.search, color: Colors.white),
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0),
+                  ),
+                  onPressed: () {
+                    debugPrint("Menu Pressed");
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       drawer: Home(),
       body: Stack(
@@ -50,21 +80,17 @@ class _Profile extends State<Profil> {
                       return Stack(
                         fit: StackFit.expand,
                         children: [
-                          Positioned(
-                              right: 0,
-                              left: 0,
-                              bottom: 0,
-                              child: Center(
-                                child: Container(
-                                  height: innerHeight * 1.20,
-                                  width: innerWidth * 0.40,
-                                  child: Image.asset(
-                                    'assets/img/muslim.png',
-                                    width: innerWidth * 0.45,
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              )),
+                          Center(
+                            child: Container(
+                              height: innerHeight * 1.20,
+                              width: innerWidth * 0.40,
+                              child: Image.asset(
+                                'assets/img/muslim.png',
+                                width: innerWidth * 0.45,
+                                fit: BoxFit.fitWidth,
+                              ),
+                            ),
+                          ),
                         ],
                       );
                     }),

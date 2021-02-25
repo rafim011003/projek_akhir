@@ -49,13 +49,22 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
 
         child: AnimatedSplashScreen(
-          splash: Image.asset(
-            'assets/img/Group.png',
-            height: 400.0,
-            width: 400.0,
+          splash: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/img/bckgrn1.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Image.asset(
+              'assets/img/Group.png',
+              height: 400.0,
+              width: 400.0,
+            ),
           ),
           nextScreen: OnBoarding(),
-          splashIconSize: 500,
+          splashIconSize: double.infinity,
           splashTransition: SplashTransition.scaleTransition,
         ),
         // child: Column(

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-class CardCourses extends StatelessWidget {
+class EzeeyApp extends StatelessWidget {
   final Image image;
   final String title;
   final String hours;
@@ -11,7 +11,7 @@ class CardCourses extends StatelessWidget {
   final double percentage;
   final Color color;
 
-  CardCourses({
+  EzeeyApp({
     Key key,
     @required this.image,
     @required this.title,
@@ -28,7 +28,7 @@ class CardCourses extends StatelessWidget {
       padding: EdgeInsets.all(30.0),
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30.0),
+        borderRadius: BorderRadius.circular(20.0),
         color: color,
       ),
       child: Row(
@@ -86,7 +86,9 @@ class CardCourses extends StatelessWidget {
                   lineWidth: 2.0,
                   animation: true,
                   percent: percentage,
-                  center: Icon(Icons.play_arrow, color: Color(0xFFF18C8E)),
+                  center:
+                      IconButton(icon: Icon(Icons.play_arrow), onPressed: null),
+                  // center: Icon(Icons.play_arrow, color: Color(0xFFF18C8E)),
                   circularStrokeCap: CircularStrokeCap.round,
                   progressColor: Color(0xFFF18C8E),
                 ),

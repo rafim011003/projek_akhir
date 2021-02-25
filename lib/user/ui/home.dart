@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
 
     return Drawer(
         child: Container(
-      color: Colors.teal[100],
+      color: Colors.teal[200],
       child: Column(children: [
         Container(
           padding: EdgeInsets.only(top: 25),
@@ -182,6 +182,7 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
+
         // Row(
         //   mainAxisAlignment: CrossAxisAlignment.center,
         //   children: [

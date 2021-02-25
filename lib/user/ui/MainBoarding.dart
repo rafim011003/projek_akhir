@@ -102,7 +102,7 @@ class _MainBoardingState extends State<MainBoarding> {
               ),
               SizedBox(height: 30),
               Container(
-                height: height * 1.5,
+                height: height * 1.4,
                 width: width,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -118,11 +118,19 @@ class _MainBoardingState extends State<MainBoarding> {
                           Container(
                             alignment: Alignment.topLeft,
                             padding: EdgeInsets.only(left: 30, top: 15),
-                            child: Text("Mata Pelajaran",
-                                style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold)),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    new MaterialPageRoute(
+                                        builder: (context) => MataPelajaran()));
+                              },
+                              child: Text("Mata Pelajaran",
+                                  style: TextStyle(
+                                      fontFamily: "Poppins",
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold)),
+                            ),
                           ),
                           Container(
                             alignment: Alignment.topLeft,
@@ -140,210 +148,13 @@ class _MainBoardingState extends State<MainBoarding> {
                       child: Container(
                         height: 170,
                         child: ListView(
-                          padding: EdgeInsets.symmetric(vertical: 25.0),
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            Container(
-                              width: 170,
-                              margin: EdgeInsets.only(
-                                left: 20,
-                              ),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage("assets/img/papan.jpg"),
-                                    fit: BoxFit.cover),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                              ),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Container(
-                                    width: 140,
-                                    height: 100,
-                                    child: Center(
-                                      child: Text(
-                                        "Matematika",
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: "Poppins"),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: 170,
-                              margin: EdgeInsets.only(
-                                left: 20,
-                              ),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage("assets/img/papan.jpg"),
-                                    fit: BoxFit.cover),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                              ),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Container(
-                                    width: 140,
-                                    height: 100,
-                                    child: Center(
-                                      child: Text(
-                                        "B.Inggris",
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: "Poppins"),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: 170,
-                              margin: EdgeInsets.only(
-                                left: 20,
-                              ),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage("assets/img/papan.jpg"),
-                                    fit: BoxFit.cover),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                              ),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Container(
-                                    width: 140,
-                                    height: 100,
-                                    child: Center(
-                                      child: Text(
-                                        "Flutter",
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: "Poppins"),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: 170,
-                              margin: EdgeInsets.only(
-                                left: 20,
-                              ),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage("assets/img/papan.jpg"),
-                                    fit: BoxFit.cover),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                              ),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Container(
-                                    width: 140,
-                                    height: 100,
-                                    child: Center(
-                                      child: Text(
-                                        "React JS",
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: "Poppins"),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: 170,
-                              margin: EdgeInsets.only(
-                                left: 20,
-                              ),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage("assets/img/papan.jpg"),
-                                    fit: BoxFit.cover),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                              ),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Container(
-                                    width: 140,
-                                    height: 100,
-                                    child: Center(
-                                      child: Text(
-                                        "Server",
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: "Poppins"),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: 170,
-                              margin: EdgeInsets.only(
-                                left: 20,
-                              ),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage("assets/img/papan.jpg"),
-                                    fit: BoxFit.cover),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                              ),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Container(
-                                    width: 140,
-                                    height: 100,
-                                    child: Center(
-                                      child: Text(
-                                        "Jaringan",
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: "Poppins"),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                          ],
-                        ),
+                            padding: EdgeInsets.symmetric(vertical: 25.0),
+                            scrollDirection: Axis.horizontal,
+                            children: List.generate(
+                                7,
+                                (index) => cardPelajaran(
+                                      index: index,
+                                    ))),
                       ),
                     ),
                     Container(
@@ -370,269 +181,7 @@ class _MainBoardingState extends State<MainBoarding> {
                         ],
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 20),
-                      height: 150,
-                      width: 420,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: const Radius.circular(10.0),
-                          topRight: const Radius.circular(10.0),
-                        ),
-                        image: DecorationImage(
-                            image: AssetImage(
-                              "assets/img/covid.jpg",
-                            ),
-                            fit: BoxFit.cover),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 10),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 65,
-                      width: 420,
-                      decoration: BoxDecoration(
-                        color: Colors.blueGrey[50],
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: const Radius.circular(10.0),
-                          bottomRight: const Radius.circular(10.0),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 10),
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(2.5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.all(5),
-                              child: Text("Ujian Tengah Semester",
-                                  style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                    color: Colors.grey[850],
-                                  )),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 5),
-                              child: Text("Ujian akan di laksanakan pada...",
-                                  style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 11,
-                                    color: Colors.grey[850],
-                                  )),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 20),
-                      height: 220,
-                      width: 420,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: const Radius.circular(10.0),
-                          topRight: const Radius.circular(10.0),
-                        ),
-                        image: DecorationImage(
-                            image: AssetImage(
-                              "assets/img/utbk.jpg",
-                            ),
-                            fit: BoxFit.cover),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 10),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 65,
-                      width: 420,
-                      decoration: BoxDecoration(
-                        color: Colors.blueGrey[50],
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: const Radius.circular(10.0),
-                          bottomRight: const Radius.circular(10.0),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 10),
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(2.5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.all(5),
-                              child: Text("Bimbel Latihan UTBK",
-                                  style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                    color: Colors.grey[850],
-                                  )),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 5),
-                              child: Text("Pendaftaran bisa melalui...",
-                                  style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 11,
-                                    color: Colors.grey[850],
-                                  )),
-                            ),
-                            // Text("Ujian Tengah Semester",
-                            //     style: TextStyle(
-                            //       fontFamily: "Poppins",
-                            //       fontWeight: FontWeight.bold,
-                            //       fontSize: 16,
-                            //       color: Colors.grey[850],
-                            //     )),
-                            // SizedBox(
-                            //   height: 5,
-                            // ),
-                            // Text(
-                            //   "Ujian tengah semester berlangsung ...",
-                            //   style: TextStyle(
-                            //     color: Colors.grey[850],
-                            //     fontFamily: "Poppins",
-                            //     fontWeight: FontWeight.bold,
-                            //     fontSize: 11,
-                            //   ),
-                            // )
-                          ],
-                        ),
-                      ),
-                    ),
-                    new Container(
-                      child: new Material(
-                        child: new InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Pengumuman()));
-                          },
-                        ),
-                      ),
-                      margin: EdgeInsets.only(top: 20),
-                      height: 220,
-                      width: 419,
-                      decoration: BoxDecoration(
-                        color: Colors.blueGrey[900],
-                        borderRadius: BorderRadius.only(
-                          topLeft: const Radius.circular(10.0),
-                          topRight: const Radius.circular(10.0),
-                        ),
-                        image: DecorationImage(
-                            image: AssetImage(
-                              "assets/img/toiec.jpg",
-                            ),
-                            fit: BoxFit.cover),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 10),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 65,
-                      width: 420,
-                      decoration: BoxDecoration(
-                        color: Colors.blueGrey[50],
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: const Radius.circular(10.0),
-                          bottomRight: const Radius.circular(10.0),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 10),
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(2.5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.all(5),
-                              child: Text("Toeic SMK MADINATUL QURAN",
-                                  style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                    color: Colors.grey[850],
-                                  )),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 5),
-                              child: Text("Pendaftaran bisa melalui...",
-                                  style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 11,
-                                    color: Colors.grey[850],
-                                  )),
-                            ),
-                            // Text("Ujian Tengah Semester",
-                            //     style: TextStyle(
-                            //       fontFamily: "Poppins",
-                            //       fontWeight: FontWeight.bold,
-                            //       fontSize: 16,
-                            //       color: Colors.grey[850],
-                            //     )),
-                            // SizedBox(
-                            //   height: 5,
-                            // ),
-                            // Text(
-                            //   "Ujian tengah semester berlangsung ...",
-                            //   style: TextStyle(
-                            //     color: Colors.grey[850],
-                            //     fontFamily: "Poppins",
-                            //     fontWeight: FontWeight.bold,
-                            //     fontSize: 11,
-                            //   ),
-                            // )
-                          ],
-                        ),
-                      ),
-                    ),
+                    cardPengumuman(),
                   ],
                 ),
               ),
@@ -671,4 +220,168 @@ class _MainBoardingState extends State<MainBoarding> {
   //     print(e);
   //   }
   // }
+}
+
+class cardPelajaran extends StatelessWidget {
+  final index;
+  const cardPelajaran({
+    Key key,
+    this.index,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Pelajaran()));
+      },
+      child: Container(
+        width: 170,
+        margin: EdgeInsets.only(
+          left: 20,
+        ),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/img/papan.jpg"), fit: BoxFit.cover),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: 10, left: 5),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Icon(
+                  Icons.emoji_events_outlined,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 10, left: 5),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Icon(
+                  Icons.more_vert,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+        // child: Column(
+        //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //   children: <Widget>[
+        //     Container(
+        //       width: 140,
+        //       height: 100,
+        //       child: Center(
+        //         child: Text(
+        //           "Matematika",
+        //           textAlign: TextAlign.left,
+        //           style: TextStyle(
+        //               color: Colors.white,
+        //               fontWeight: FontWeight.bold,
+        //               fontFamily: "Poppins"),
+        //         ),
+        //       ),
+        //     ),
+
+        //   ],
+        // ),
+      ),
+    );
+  }
+}
+
+class cardPengumuman extends StatelessWidget {
+  const cardPengumuman({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 20),
+      height: 200,
+      width: 420,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: const Radius.circular(10.0),
+          topRight: const Radius.circular(10.0),
+          bottomLeft: const Radius.circular(10.0),
+          bottomRight: const Radius.circular(10.0),
+        ),
+        image: DecorationImage(
+            image: AssetImage(
+              "assets/img/BgPengumuman.png",
+            ),
+            fit: BoxFit.cover),
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.grey.withOpacity(0.5),
+        //     spreadRadius: 2,
+        //     blurRadius: 7,
+        //     offset: Offset(0, 10),
+        //   ),
+        // ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: EdgeInsets.only(left: 20),
+            height: 21.0,
+            child: Row(
+              children: [
+                Text(
+                  '07:00 - 08:30',
+                  style: TextStyle(
+                      fontFamily: "Poppins", fontSize: 15, color: Colors.white),
+                ),
+                VerticalDivider(
+                  color: Colors.black,
+                ),
+                Text('Morning',
+                    style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontSize: 15,
+                        color: Colors.white)),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 20),
+            child: Text('Bahasa Indonesia',
+                style: TextStyle(
+                  fontFamily: "Poppins",
+                  fontSize: 21.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                )),
+          ),
+        ],
+      ),
+      // child: Container(
+      //   padding: EdgeInsets.only(bottom: 5, right: 10),
+      //   child: Align(
+      //     alignment: Alignment.bottomRight,
+      //     child: RaisedButton(
+      //       onPressed: () {
+      //         Navigator.push(
+      //           context,
+      //           MaterialPageRoute(builder: (context) => Pengumuman()),
+      //         );
+      //       },
+      //       child: Text("Read More"),
+      //       color: Colors.blueGrey[50],
+      //       textColor: Colors.black,
+      //     ),
+      //   ),
+      // ),
+    );
+  }
 }

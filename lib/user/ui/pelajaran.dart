@@ -1,11 +1,11 @@
 part of 'uis.dart';
 
-class Pengumuman extends StatefulWidget {
+class Pelajaran extends StatefulWidget {
   @override
-  _Pengumuman createState() => _Pengumuman();
+  _Pelajaran createState() => _Pelajaran();
 }
 
-class _Pengumuman extends State<Pengumuman> {
+class _Pelajaran extends State<Pelajaran> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -30,11 +30,13 @@ class _Pengumuman extends State<Pengumuman> {
                 child: FlatButton(
                   padding: EdgeInsets.all(0),
                   color: Colors.white.withOpacity(0.3),
-                  child: Icon(Icons.menu, color: Colors.white),
+                  child: Icon(Icons.navigate_before, color: Colors.white),
                   shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(10.0),
                   ),
-                  onPressed: () => _scaffoldKey.currentState.openDrawer(),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
               ),
             ],
