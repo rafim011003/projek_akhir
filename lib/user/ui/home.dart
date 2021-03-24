@@ -43,177 +43,128 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
-    return Drawer(
-        child: Container(
-      color: Colors.teal[200],
-      child: Column(children: [
-        Container(
-          padding: EdgeInsets.only(top: 25),
-          child: ListTile(
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  "https://www.kindpng.com/picc/m/80-807947_transparent-crazy-man-png-man-png-download.png"),
-              radius: 40,
-            ),
-            title: Text("Loremipsumdolar",
-                style: TextStyle(fontFamily: "Poppins", fontSize: 15)),
-            subtitle: Text("Loremipsum@mq.com",
-                style: TextStyle(fontFamily: "Poppins", fontSize: 15)),
-          ),
-        ),
-
-        Container(
-          child: Expanded(
-            flex: 2,
-            child: ListView(
-              padding: EdgeInsets.only(top: 24, left: 16, right: 16),
-              children: [
-                ListTile(
-                  leading: Icon(
-                    Icons.home,
+    return ClipRRect(
+      borderRadius: BorderRadius.only(
+          topRight: Radius.circular(20), bottomRight: Radius.circular(20)),
+      child: Drawer(
+          child: Container(
+        color: Color(0xfff438b73),
+        child: Column(children: [
+          Container(
+              width: double.infinity,
+              color: Color(0xfff438b73),
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Material(
+                  color: Colors.transparent,
+                  child: Image.asset("assets/img/Group.png",
+                      height: 150, width: 150),
+                ),
+              )),
+          Container(
+            child: Expanded(
+              flex: 2,
+              child: ListView(
+                padding: EdgeInsets.only(top: 24, left: 16, right: 16),
+                children: [
+                  ListTile(
+                    leading: Icon(Icons.home, size: 25, color: Colors.white),
+                    title: Text(
+                      'Home',
+                      style:
+                          TextStyle(fontFamily: "Poppins", color: Colors.white),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MainBoarding()));
+                    },
                   ),
-                  title: Text('Home'),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MainBoarding()));
-                  },
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.pie_chart,
+                  ListTile(
+                    leading: Icon(Icons.calendar_today_outlined,
+                        size: 25, color: Colors.white),
+                    title: Text(
+                      'Jadwal',
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        color: Colors.white,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => JadwalPelajaran()));
+                    },
                   ),
-                  title: Text('Jadwal Pelajaran'),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => JadwalPelajaran()));
-                  },
-                ),
-                ListTile(
-                  leading: Icon(Icons.edit_road),
-                  title: Text('Tugas'),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Tugas()));
-                  },
-                ),
-
-                ListTile(
-                  leading: Icon(
-                    Icons.notifications_active_rounded,
+                  ListTile(
+                    leading: Icon(Icons.account_circle,
+                        size: 25, color: Colors.white),
+                    title: Text(
+                      'Profile',
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        color: Colors.white,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Profil()));
+                    },
                   ),
-                  title: Text('Pengumuman'),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Pengumuman()));
-                  },
-                ),
-                ListTile(
-                  leading: Icon(Icons.account_circle),
-                  title: Text('Profile'),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Profil()));
-                  },
-                ),
-
-                // DrawerTile(
-                //   title: "Home",
-                //   icon: Icons.home,
-                //   // onTap: () {
-                //   //   if (currentPage != "Home")
-                //   //     Navigator.pushReplacementNamed(context, '/home');
-                //   // },
-                //   iconprimary,
-
-                //   // isSelected: currentPage == "Home" ? true : false),
-                // ),
-                // DrawerTile(
-                //   icon: Icons.pie_chart,
-
-                //   iconColor: EzeeyColors.warning,
-                //   title: "Pelajaran",
-                //   // isSelected: currentPage == "Profile" ? true : false),
-                // ),
-                // DrawerTile(
-                //   icon: Icons.edit_road,
-                //   // onTap: () {
-                //   //   if (currentPage != "Account")
-                //   //     Navigator.pushReplacementNamed(context, '/account');
-                //   // },
-                //   iconColor: EzeeyColors.info,
-                //   title: "Tugas",
-                //   // isSelected: currentPage == "Account" ? true : false)
-                // ),
-                // DrawerTile(
-                //   icon: Icons.book_rounded,
-                //   // onTap: () {
-                //   //   if (currentPage != "Elements")
-                //   //     Navigator.pushReplacementNamed(context, '/elements');
-                //   // },
-                //   iconColor: EzeeyColors.error,
-                //   title: "Halaqoh",
-                //   //
-                // ),
-                // DrawerTile(
-                //   icon: Icons.notifications_rounded,
-
-                //   iconColor: EzeeyColors.primary,
-                //   title: "Pengumuman",
-                //   // isSelected: currentPage == "Articles" ? true : false),
-                // ),
-                // DrawerTile(
-                //   icon: Icons.account_circle,
-                //   // onTap: () {
-                //   //   if (currentPage != "Articles")
-                //   //     Navigator.pushReplacementNamed(context, '/articles');
-                //   // },
-                //   iconColor: EzeeyColors.primary,
-                //   title: "Profil",
-                //   // isSelected: currentPage == "Articles" ? true : false),
-                // ),
-              ],
+                  ListTile(
+                    leading: Icon(Icons.logout, size: 25, color: Colors.white),
+                    title: Text(
+                      'Logout',
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        color: Colors.white,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => SignIn()));
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-
-        // Row(
-        //   mainAxisAlignment: CrossAxisAlignment.center,
-        //   children: [
-        //     Icon(
-        //       Icons.settings,
-        //       color: Colors.white,
-        //     ),
-        //     SizedBox(
-        //       width: 10,
-        //     ),
-        //     Text(
-        //       'Settings',
-        //       style: TextStyle(
-        //           color: Colors.blueGrey[800], fontWeight: FontWeight.bold),
-        //     ),
-        //     SizedBox(
-        //       width: 10,
-        //     ),
-        //     Container(width: 2, height: 20, color: Colors.blueGrey[800]),
-        //     SizedBox(
-        //       width: 10,
-        //     ),
-        //     Text(
-        //       'Log out',
-        //       style: TextStyle(
-        //           color: Colors.blueGrey[800], fontWeight: FontWeight.bold),
-        //     )
-        //   ],
-        // )
-      ]),
-    ));
+          Container(
+            margin: EdgeInsets.only(bottom: 10),
+            width: double.maxFinite,
+            height: 1,
+            color: Colors.grey,
+          ),
+          Column(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: Image.asset(
+                      "assets/img/muslim1.png",
+                      width: 50,
+                      height: 50,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    'Bintang Fabian',
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontSize: 15,
+                      color: Colors.blueGrey[800],
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ]),
+      )),
+    );
   }
 
   // void logout() async {

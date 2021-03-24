@@ -9,9 +9,8 @@ class _Tugas extends State<Tugas> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    // TODO: implement build
+
     return Scaffold(
       backgroundColor: Colors.teal[300],
       key: _scaffoldKey,
@@ -30,28 +29,12 @@ class _Tugas extends State<Tugas> {
                 child: FlatButton(
                   padding: EdgeInsets.all(0),
                   color: Colors.white.withOpacity(0.3),
-                  child: Icon(Icons.menu, color: Colors.white),
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0),
-                  ),
-                  onPressed: () => _scaffoldKey.currentState.openDrawer(),
-                ),
-              ),
-              Container(
-                margin: new EdgeInsets.symmetric(
-                    horizontal: EzeeyColors.mainPadding,
-                    vertical: EzeeyColors.mainPadding),
-                height: 44,
-                width: 44,
-                child: FlatButton(
-                  padding: EdgeInsets.all(0),
-                  color: Colors.white.withOpacity(0.3),
-                  child: Icon(Icons.search, color: Colors.white),
+                  child: Icon(Icons.navigate_before, color: Colors.white),
                   shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(10.0),
                   ),
                   onPressed: () {
-                    debugPrint("Menu Pressed");
+                    Navigator.pop(context);
                   },
                 ),
               ),
@@ -64,13 +47,92 @@ class _Tugas extends State<Tugas> {
         child: Column(
           children: [
             Container(
+              margin: EdgeInsets.only(top: 70),
+              height: 200,
+              width: 420,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(10.0),
+                  topRight: const Radius.circular(10.0),
+                  bottomLeft: const Radius.circular(10.0),
+                  bottomRight: const Radius.circular(10.0),
+                ),
+                image: DecorationImage(
+                    image: AssetImage(
+                      "assets/img/papan1.jpg",
+                    ),
+                    fit: BoxFit.cover),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 50, top: 20),
+                    child: Row(
+                      children: <Widget>[
+                        Text("Agama",
+                            style: TextStyle(
+                                fontFamily: "Poppins",
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 40, top: 80),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                            child: Icon(
+                          Icons.location_on_outlined,
+                          color: Colors.white,
+                        )),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Text("XII REKAYASA PERANGKAT LUNAK",
+                            style: TextStyle(
+                                fontFamily: "Poppins",
+                                color: Colors.white,
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 40, top: 10),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                            child: Icon(
+                          Icons.account_circle_outlined,
+                          color: Colors.white,
+                        )),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Text("Ust.Fajri",
+                            style: TextStyle(
+                                fontFamily: "Poppins",
+                                color: Colors.white,
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
               margin: EdgeInsets.only(top: 10),
               height: height * 1.1,
               child: Column(
                 children: [
                   Container(
                     alignment: Alignment.topLeft,
-                    padding: EdgeInsets.only(left: 35, top: 50),
+                    padding: EdgeInsets.only(left: 35, top: 20),
                     child: Text("Tugas Harian",
                         style: TextStyle(
                             fontFamily: "Poppins",
@@ -111,10 +173,10 @@ class ezeeyApp extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ezeeyAppState createState() => _ezeeyAppState();
+  _EzeeyAppState createState() => _EzeeyAppState();
 }
 
-class _ezeeyAppState extends State<ezeeyApp> {
+class _EzeeyAppState extends State<ezeeyApp> {
   var list = [
     "Matematika",
     "Bahasa Indonesia",
@@ -126,13 +188,24 @@ class _ezeeyAppState extends State<ezeeyApp> {
   ];
   @override
   Widget build(BuildContext context) {
-    return EzeeyApp(
-      image: Image.asset("assets/img/math.png", width: 40, height: 40),
-      color: Colors.white38,
-      title: "Matematika",
-      hours: "Senin 22 Februari",
-      progress: "25%",
-      percentage: 0.25,
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => TugasPage()));
+      },
+      child: EzeeyApp(
+        image: Image.asset(
+          "assets/img/notip2.png",
+          width: 40,
+          height: 40,
+          color: Colors.white,
+        ),
+        color: Colors.white38,
+        title: "Integral",
+        hours: "Senin 22 Februari",
+        progress: "25%",
+        percentage: 0.25,
+      ),
     );
   }
 }

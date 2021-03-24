@@ -11,9 +11,9 @@ class _Profile extends State<Profil> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    // TODO: implement build
+
     return Scaffold(
-      backgroundColor: Colors.teal[300],
+      backgroundColor: Color(0xfff438b73),
       key: _scaffoldKey,
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
@@ -37,24 +37,6 @@ class _Profile extends State<Profil> {
                   onPressed: () => _scaffoldKey.currentState.openDrawer(),
                 ),
               ),
-              Container(
-                margin: new EdgeInsets.symmetric(
-                    horizontal: EzeeyColors.mainPadding,
-                    vertical: EzeeyColors.mainPadding),
-                height: 44,
-                width: 44,
-                child: FlatButton(
-                  padding: EdgeInsets.all(0),
-                  color: Colors.white.withOpacity(0.3),
-                  child: Icon(Icons.search, color: Colors.white),
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0),
-                  ),
-                  onPressed: () {
-                    debugPrint("Menu Pressed");
-                  },
-                ),
-              ),
             ],
           ),
         ),
@@ -64,7 +46,7 @@ class _Profile extends State<Profil> {
         fit: StackFit.expand,
         children: [
           Container(
-            color: Colors.teal[300],
+            color: Color(0xfff438b73),
           ),
           Scaffold(
             backgroundColor: Colors.transparent,
@@ -97,7 +79,7 @@ class _Profile extends State<Profil> {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 0.1),
-                    child: Text("Bintang Fabian",
+                    child: Text("Kepala Sekolah",
                         style: TextStyle(
                             color: Colors.white,
                             fontFamily: "Poppins",

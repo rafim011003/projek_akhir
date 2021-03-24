@@ -1,16 +1,13 @@
-import 'dart:convert';
-
+// import 'dart:convert';
+import 'package:project_coba/Animation/FadeAnimation.dart';
 import 'package:flutter/material.dart';
-// import 'package:projek_akhir/user/ui/home.dart';
-import 'package:project_coba/admin/ui/uis.dart';
-import 'package:project_coba/guru/ui/uis.dart';
+import 'package:project_coba/KepalaSekolah/showroom.dart';
+import 'package:project_coba/auth/post.dart';
 import 'package:project_coba/user/ui/uis.dart';
-import 'signUp.dart';
-// import 'package:project_coba/network_utils/api.dart';
-import 'package:project_coba/user/ui/uis.dart';
-import 'package:project_coba/user/viewModels/view_models.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-// import 'loginAdmin.dart';
+// import 'package:project_coba/KepalaSekolah/showroom.dart';
+// import 'package:project_coba/user/ui/uis.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:http/http.dart' as http;
 
 class SignIn extends StatefulWidget {
   @override
@@ -20,314 +17,257 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
-  String msg;
-
-  // final _formKey = GlobalKey<FormState>();
-  // void login() {
-  //   loginUser(email.text, password.text).then((value) {
-  //     setState(() {
-  //       _isLoading = true;
-  //     });
-  //     setState(() {
-  //       if (value == true) {
-  //         // msg = "Success";
-  //         AlertDialog alertDialog = AlertDialog(
-  //           content: Container(
-  //             height: 100.0,
-  //             child: Column(
-  //               children: [
-  //                 Text("Login Berhasil"),
-  //                 RaisedButton(
-  //                   child: Text("OK"),
-  //                   onPressed: () => Navigator.pushAndRemoveUntil(
-  //                     context,
-  //                     MaterialPageRoute(builder: (context) => Home()),
-  //                     (Route<dynamic> route) => false,
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         );
-  //         showDialog(context: context, child: alertDialog);
-  //       } else {
-  //         AlertDialog alertDialog = AlertDialog(
-  //           content: Container(
-  //             height: 100.0,
-  //             child: Column(
-  //               children: [
-  //                 Text("Login gagal"),
-  //                 RaisedButton(
-  //                   child: Text("OK"),
-  //                   onPressed: () => Navigator.pop(context),
-  //                 )
-  //               ],
-  //             ),
-  //           ),
-  //         );
-  //         showDialog(context: context, child: alertDialog);
-  //       }
-  //     });
-  //   });
-  //   setState(() {
-  //     _isLoading = false;
-  //   });
-  // }
-
-  // var emailvalid;
-  // var passwordvalid;
-  // final _scaffoldKey = GlobalKey<ScaffoldState>();
-  // _showMsg(msg) {
-  //   final snackBar = SnackBar(
-  //     content: Text(msg),
-  //     action: SnackBarAction(
-  //       label: 'Close',
-  //       onPressed: () {
-  //         // Some code to undo the change!
-  //       },
-  //     ),
-  //   );
-  //   _scaffoldKey.currentState.showSnackBar(snackBar);
-  // }
+  var emailvalid;
+  var passwordvalid;
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    // Build a Form widget using the _formKey created above.
     return Scaffold(
-      backgroundColor: Colors.white,
-      // key: _scaffoldKey,
-      body: Container(
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //       image: AssetImage("assets/img/bckgrn1.png"), fit: BoxFit.cover),
-        // ),
-        alignment: Alignment.center,
-        child: Stack(
-          children: <Widget>[
-            Positioned(
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(left: 44, right: 20),
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(
-                          fontSize: 40,
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.normal,
-                          color: Colors.grey[850],
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Stack(children: [
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: 500,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/img/bglogin.png'),
+                            fit: BoxFit.fill)),
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned(
+                          right: 20,
+                          top: 40,
+                          width: 80,
+                          height: 150,
+                          child: FadeAnimation(
+                              1.5,
+                              Container(
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/img/clock.png'))),
+                              )),
                         ),
-                      ),
+                      ],
                     ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(left: 44, right: 20),
-                      child: Text(
-                        "Learn with your friend around the world in your hands",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.normal,
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 15, right: 20),
-                      child: Padding(
-                        padding: const EdgeInsets.all(25.0),
-                        child: Form(
-                          // key: _formKey,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              TextFormField(
-                                controller: email,
-                                style: TextStyle(color: Colors.grey[600]),
-                                cursorColor: Colors.white,
-                                keyboardType: TextInputType.text,
-                                decoration: InputDecoration(
-                                  hintText: "Email Address",
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey[600],
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.normal),
-                                ),
-                                // validator: (emailValue) {
-                                //   if (emailValue.isEmpty) {
-                                //     return 'Please enter email';
-                                //   }
-                                //   emailvalid = emailValue;
-                                //   return null;
-                                // },
-                              ),
-                              SizedBox(
-                                height: 30,
-                              ),
-                              TextFormField(
-                                controller: password,
-                                style: TextStyle(color: Colors.grey[600]),
-                                cursorColor: Colors.white,
-                                keyboardType: TextInputType.text,
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  hintText: "Password",
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey[600],
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.normal),
-                                ),
-                                // validator: (passwordValue) {
-                                //   if (passwordValue.isEmpty) {
-                                //     return 'Please enter some text';
-                                //   }
-                                //   passwordvalid = passwordValue;
-                                //   return null;
-                                // },
-                              ),
-                              SizedBox(
-                                height: 100,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: RaisedButton(
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 132,
-                                        right: 132,
-                                        top: 15,
-                                        bottom: 15),
-                                    child: Text(
-                                      'Sign In',
-                                      // _isLoading ? 'Proccessing...' : 'LOGIN',
-                                      textDirection: TextDirection.ltr,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 15.0,
-                                          decoration: TextDecoration.none,
-                                          fontWeight: FontWeight.normal,
-                                          fontFamily: "Poppins"),
-                                    ),
-                                  ),
-                                  color: Colors.teal[300],
-                                  splashColor: Colors.teal[100],
-                                  disabledColor: Colors.grey,
-                                  shape: new RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(10)),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => MainBoarding()),
-                                    );
-                                    // if (_formKey.currentState.validate()) {
-                                    //   login();
-                                    //   print('login dipencet');
-                                    // }
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    // Row(
-                    //   children: [
-                    //     Column(
-                    //       children: [
-                    //         Container(
-                    //           child: InkWell(
-                    //             onTap: () {
-                    //               Navigator.push(
-                    //                   context,
-                    //                   new MaterialPageRoute(
-                    //                       builder: (context) => SignUp()));
-                    //             },
-                    //             child: Text(
-                    //               'Sign up',
-                    //               style: TextStyle(
-                    //                 color: Colors.white,
-                    //                 fontSize: 15.0,
-                    //                 decoration: TextDecoration.none,
-                    //                 fontWeight: FontWeight.bold,
-                    //               ),
-                    //             ),
-                    //           ),
-                    //         )
-                    //       ],
-                    //     ),
-                    //   ],
-                    // ),
-                    // Container(
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.only(top: 20),
-                    //     child: InkWell(
-                    //       onTap: () {
-                    //         Navigator.push(
-                    //             context,
-                    //             new MaterialPageRoute(
-                    //                 builder: (context) => SignUp()));
-                    //       },
-                    //       child: Text(
-                    //         'Sign up',
-                    //         style: TextStyle(
-                    //             color: Colors.grey[850],
-                    //             fontSize: 15.0,
-                    //             decoration: TextDecoration.none,
-                    //             fontWeight: FontWeight.bold,
-                    //             fontFamily: "Poppins"),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            )
-          ],
-        ),
-      ),
-    );
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 280.0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: const Radius.circular(50.0),
+                      topRight: const Radius.circular(50.0)),
+                  color: Colors.white),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(top: 50.0),
+                    child: FadeAnimation(
+                      1.8,
+                      Column(
+                        children: <Widget>[
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            padding: EdgeInsets.only(left: 23),
+                            child: Text(
+                              "Sign In",
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.normal,
+                                color: Colors.grey[850],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            padding: EdgeInsets.only(left: 23),
+                            child: Text(
+                              "Learn with your friends around the \nworld in your hand",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.normal,
+                                color: Colors.grey[850],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: Padding(
+                              padding: const EdgeInsets.all(25.0),
+                              child: Form(
+                                key: _formKey,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    TextFormField(
+                                      controller: email,
+                                      style: TextStyle(color: Colors.grey[600]),
+                                      cursorColor: Colors.white,
+                                      keyboardType: TextInputType.text,
+                                      decoration: InputDecoration(
+                                        hintText: "Email Address",
+                                        hintStyle: TextStyle(
+                                            color: Colors.grey[600],
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                      validator: (emailValue) {
+                                        if (emailValue.isEmpty) {
+                                          return 'Please enter email';
+                                        }
+                                        emailvalid = emailValue;
+                                        return null;
+                                      },
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    TextFormField(
+                                      controller: password,
+                                      style: TextStyle(color: Colors.grey[600]),
+                                      cursorColor: Colors.white,
+                                      keyboardType: TextInputType.text,
+                                      obscureText: true,
+                                      decoration: InputDecoration(
+                                        hintText: "Password",
+                                        hintStyle: TextStyle(
+                                            color: Colors.grey[600],
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                      validator: (passwordValue) {
+                                        if (passwordValue.isEmpty) {
+                                          return 'Please enter some text';
+                                        }
+                                        passwordvalid = passwordValue;
+                                        return null;
+                                      },
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    FadeAnimation(
+                                      2,
+                                      InkWell(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      MainBoarding()));
+                                        },
+                                        child: Container(
+                                          margin: EdgeInsets.only(top: 50.0),
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Color(0xfff438b73),
+                                          ),
+                                          child: Center(
+                                            child: RaisedButton(
+                                              onPressed: () {
+                                                if (_formKey.currentState
+                                                    .validate()) {
+                                                  setState(() {
+                                                    _isLoading = true;
+                                                  });
+                                                  loginUser(
+                                                          email.text,
+                                                          password.text,
+                                                          context)
+                                                      .then((value) {
+                                                    setState(() {
+                                                      _isLoading = true;
+                                                    });
+                                                    setState(() {
+                                                      if (value == true) {
+                                                        setState(() {
+                                                          _isLoading = true;
+                                                        });
+                                                        print('berhasil login');
+                                                      } else if (value ==
+                                                          false) {
+                                                        setState(() {
+                                                          _isLoading = true;
+                                                        });
+                                                        print("email udah ada");
+                                                      } else {
+                                                        setState(() {
+                                                          _isLoading = true;
+                                                        });
+                                                        print('Gagal login');
+                                                      }
+                                                    });
+                                                    setState(() {
+                                                      _isLoading = false;
+                                                    });
+                                                  });
+                                                  setState(() {
+                                                    _isLoading = true;
+                                                  });
+                                                }
+                                              },
+                                              child: Text(
+                                                _isLoading ? "Tunggu" : "Login",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: "Poppins"),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          // Container(
+                          //   padding: EdgeInsets.all(8.0),
+                          //   decoration: BoxDecoration(
+                          //       border: Border(
+                          //           bottom:
+                          //               BorderSide(color: Colors.grey[100]))),
+                          //   child: TextField(
+                          //     decoration: InputDecoration(
+                          //         border: InputBorder.none,
+                          //         hintText: "Email or Phone number",
+                          //         hintStyle: TextStyle(
+                          //             color: Colors.grey[600],
+                          //             fontFamily: "Poppins")),
+                          //   ),
+                          // ),
+                          // Container(
+                          //   padding: EdgeInsets.all(8.0),
+                          //   child: TextField(
+                          //     decoration: InputDecoration(
+                          //         border: InputBorder.none,
+                          //         hintText: "Password",
+                          //         hintStyle: TextStyle(
+                          //             color: Colors.grey[600],
+                          //             fontFamily: "Poppins")),
+                          //   ),
+                          // ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ]),
+        ));
   }
-
-  // void _login() async {
-  //   setState(() {
-  //     _isLoading = true;
-  //   });
-  //   var data = {'email': email, 'password': password};
-
-  //   var res = await Network().authData(data, '/login');
-  //   var body = json.decode(res.body);
-
-  //   if (body['success']) {
-  // SharedPreferences localStorage = await SharedPreferences.getInstance();
-  // localStorage.setString('token', json.encode(body['token']));
-  // localStorage.setString('user', json.encode(body['user']));
-  //     Navigator.push(
-  //       context,
-  //       new MaterialPageRoute(builder: (context) => Home()),
-  //     );
-  //   } else {
-  //     _showMsg(body['message']);
-  //   }
-
-  //   setState(() {
-  //     _isLoading = false;
-  //   });
-  // }
 }

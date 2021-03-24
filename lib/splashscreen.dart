@@ -1,12 +1,12 @@
-import 'dart:async';
+// import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:project_coba/admin/ui/uis.dart';
-import 'package:project_coba/auth/signIn.dart';
-import 'package:project_coba/main.dart';
+// import 'package:project_coba/admin/ui/uis.dart';
+// import 'package:project_coba/auth/signIn.dart';
+// import 'package:project_coba/main.dart';
 import 'package:project_coba/auth/onBoarding.dart';
-import 'user/ui/uis.dart';
-import 'package:project_coba/main.dart';
+// import 'user/ui/uis.dart';
+// import 'package:project_coba/main.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 class SplashScreen extends StatefulWidget {

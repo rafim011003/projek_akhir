@@ -8,8 +8,18 @@ class MainBoarding extends StatefulWidget {
   _MainBoardingState createState() => _MainBoardingState();
 }
 
-class _MainBoardingState extends State<MainBoarding> {
+class _MainBoardingState extends State<MainBoarding>
+    with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _selectOption = true;
+
+  TabController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = new TabController(length: 2, vsync: this);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +28,7 @@ class _MainBoardingState extends State<MainBoarding> {
     SystemChrome.setEnabledSystemUIOverlays([]);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    // TODO: implement build
+
     return Scaffold(
       key: _scaffoldKey,
       extendBodyBehindAppBar: true,
@@ -43,32 +53,19 @@ class _MainBoardingState extends State<MainBoarding> {
                   onPressed: () => _scaffoldKey.currentState.openDrawer(),
                 ),
               ),
-              Container(
-                margin: new EdgeInsets.symmetric(
-                    horizontal: EzeeyColors.mainPadding,
-                    vertical: EzeeyColors.mainPadding),
-                height: 44,
-                width: 44,
-                child: FlatButton(
-                  padding: EdgeInsets.all(0),
-                  color: Colors.white.withOpacity(0.3),
-                  child: Icon(Icons.search, color: Colors.white),
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0),
-                  ),
-                  onPressed: () {
-                    debugPrint("Menu Pressed");
-                  },
-                ),
-              ),
             ],
           ),
         ),
       ),
       drawer: Home(),
-      body: Scaffold(
-        backgroundColor: Colors.teal[300],
-        body: SingleChildScrollView(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomRight,
+              colors: [Colors.teal[900], Colors.white]),
+        ),
+        child: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(
@@ -102,89 +99,129 @@ class _MainBoardingState extends State<MainBoarding> {
               ),
               SizedBox(height: 30),
               Container(
-                height: height * 1.4,
-                width: width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: const Radius.circular(70.0),
+                  height: height - 350,
+                  width: width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: const Radius.circular(40.0),
+                      topRight: const Radius.circular(40.0),
+                    ),
+                    color: Colors.white,
                   ),
-                  color: Colors.white,
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      child: Column(
+                  child: Scaffold(
+                    backgroundColor: Colors.transparent,
+                    appBar: PreferredSize(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: const Radius.circular(40.0),
+                              topRight: const Radius.circular(40.0),
+                            ),
+                          ),
+                          child: TabBar(
+                            controller: _controller,
+                            indicatorColor: Color(0xfff1fcc79),
+                            labelColor: Colors.black,
+                            tabs: [
+                              Tab(text: 'Announcement'),
+                              Tab(text: 'Recap User'),
+                            ],
+                          ),
+                        ),
+                        preferredSize: Size.fromHeight(50)),
+                    body: Container(
+                      child: TabBarView(
+                        controller: _controller,
                         children: [
                           Container(
-                            alignment: Alignment.topLeft,
-                            padding: EdgeInsets.only(left: 30, top: 15),
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    new MaterialPageRoute(
-                                        builder: (context) => MataPelajaran()));
-                              },
-                              child: Text("Mata Pelajaran",
-                                  style: TextStyle(
-                                      fontFamily: "Poppins",
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold)),
+                            padding: EdgeInsets.symmetric(vertical: 50),
+                            height: 200,
+                            width: 465,
+                            child: Container(
+                              height: 300,
+                              child: Swiper(
+                                itemCount: 3,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return ClipRRect(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    child: Stack(
+                                      fit: StackFit.expand,
+                                      children: [
+                                        Image(
+                                          image: AssetImage(
+                                            images2[index],
+                                          ),
+                                          fit: BoxFit.cover,
+                                        ),
+                                        Positioned(
+                                          child: Container(
+                                            padding: EdgeInsets.all(15.0),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              color: Colors.white,
+                                            ),
+                                            child: Text('Read More'),
+                                          ),
+                                          top: 15,
+                                          left: 15,
+                                        ),
+                                        Positioned(
+                                          child: Container(
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Penjelasan Aplikasi Disini Ngap!',
+                                                  style: TextStyle(
+                                                      color: Colors.white),
+                                                ),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Container(
+                                                  child: Row(
+                                                    children: [
+                                                      Text(
+                                                        'Nama Guru !',
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          bottom: 15,
+                                          left: 15,
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                                viewportFraction: 0.8,
+                                scale: 0.9,
+                                pagination: SwiperPagination(
+                                  builder: new DotSwiperPaginationBuilder(
+                                    color: Colors.transparent,
+                                    activeColor: Colors.transparent,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                           Container(
-                            alignment: Alignment.topLeft,
-                            padding: EdgeInsets.only(left: 30),
-                            child: Text("Pay attention and do your best",
-                                style: TextStyle(
-                                  fontFamily: "Poppins",
-                                  fontSize: 15,
-                                )),
-                          ),
+                            child: Text('asd'),
+                          )
                         ],
                       ),
                     ),
-                    Container(
-                      child: Container(
-                        height: 170,
-                        child: ListView(
-                            padding: EdgeInsets.symmetric(vertical: 25.0),
-                            scrollDirection: Axis.horizontal,
-                            children: List.generate(
-                                7,
-                                (index) => cardPelajaran(
-                                      index: index,
-                                    ))),
-                      ),
-                    ),
-                    Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            alignment: Alignment.topLeft,
-                            padding: EdgeInsets.only(left: 30),
-                            child: Text("Pengumuman",
-                                style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          Container(
-                            alignment: Alignment.topLeft,
-                            padding: EdgeInsets.only(left: 30),
-                            child: Text("expected to see the announcement",
-                                style: TextStyle(
-                                  fontFamily: "Poppins",
-                                  fontSize: 15,
-                                )),
-                          ),
-                        ],
-                      ),
-                    ),
-                    cardPengumuman(),
-                  ],
-                ),
-              ),
+                  )),
             ],
           ),
         ),
@@ -222,9 +259,9 @@ class _MainBoardingState extends State<MainBoarding> {
   // }
 }
 
-class cardPelajaran extends StatelessWidget {
+class CardPelajaran extends StatelessWidget {
   final index;
-  const cardPelajaran({
+  const CardPelajaran({
     Key key,
     this.index,
   }) : super(key: key);
@@ -234,7 +271,7 @@ class cardPelajaran extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Pelajaran()));
+            context, MaterialPageRoute(builder: (context) => Tugas()));
       },
       child: Container(
         width: 170,
@@ -243,7 +280,7 @@ class cardPelajaran extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/img/papan.jpg"), fit: BoxFit.cover),
+              image: AssetImage("assets/img/papan1.jpg"), fit: BoxFit.cover),
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Row(
@@ -254,7 +291,7 @@ class cardPelajaran extends StatelessWidget {
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Icon(
-                  Icons.emoji_events_outlined,
+                  Icons.verified_outlined,
                   color: Colors.white,
                 ),
               ),
@@ -271,6 +308,7 @@ class cardPelajaran extends StatelessWidget {
             ),
           ],
         ),
+
         // child: Column(
         //   mainAxisAlignment: MainAxisAlignment.spaceAround,
         //   children: <Widget>[
@@ -296,8 +334,8 @@ class cardPelajaran extends StatelessWidget {
   }
 }
 
-class cardPengumuman extends StatelessWidget {
-  const cardPengumuman({
+class CardPengumuman extends StatelessWidget {
+  const CardPengumuman({
     Key key,
   }) : super(key: key);
 
@@ -330,58 +368,102 @@ class cardPengumuman extends StatelessWidget {
         // ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: EdgeInsets.only(left: 20),
-            height: 21.0,
-            child: Row(
-              children: [
-                Text(
-                  '07:00 - 08:30',
-                  style: TextStyle(
-                      fontFamily: "Poppins", fontSize: 15, color: Colors.white),
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 20, top: 10),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                        child: Icon(
+                      Icons.account_circle_outlined,
+                      color: Colors.white,
+                    )),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Text("Admin",
+                        style: TextStyle(
+                            fontFamily: "Poppins",
+                            color: Colors.white,
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.bold)),
+                  ],
                 ),
-                VerticalDivider(
-                  color: Colors.black,
-                ),
-                Text('Morning',
+              ),
+              Spacer(),
+              Container(
+                padding: EdgeInsets.only(right: 20, top: 10),
+                child: Text("3 min ago",
                     style: TextStyle(
                         fontFamily: "Poppins",
-                        fontSize: 15,
-                        color: Colors.white)),
+                        color: Colors.white,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold)),
+              ),
+            ],
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 20, top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      '07:00 - 08:30',
+                      style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontSize: 15,
+                          color: Colors.white),
+                    ),
+                    VerticalDivider(
+                      color: Colors.black,
+                    ),
+                    Text('Morning',
+                        style: TextStyle(
+                            fontFamily: "Poppins",
+                            fontSize: 15,
+                            color: Colors.white)),
+                  ],
+                ),
+                Text('Persentasi Akhir',
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontSize: 21.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    )),
+                Text(
+                    'Perencanaan Persentasi akhir untuk\npara kelas XII akan di laksana kan pada...',
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontSize: 15.0,
+                      color: Colors.white,
+                    )),
               ],
             ),
           ),
           Container(
-            padding: EdgeInsets.only(left: 20),
-            child: Text('Bahasa Indonesia',
-                style: TextStyle(
-                  fontFamily: "Poppins",
-                  fontSize: 21.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                )),
+            padding: EdgeInsets.only(bottom: 5, right: 10),
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Pengumuman()),
+                  );
+                },
+                child: Text("Read More"),
+                color: Colors.blueGrey[50],
+                textColor: Colors.black,
+              ),
+            ),
           ),
         ],
       ),
-      // child: Container(
-      //   padding: EdgeInsets.only(bottom: 5, right: 10),
-      //   child: Align(
-      //     alignment: Alignment.bottomRight,
-      //     child: RaisedButton(
-      //       onPressed: () {
-      //         Navigator.push(
-      //           context,
-      //           MaterialPageRoute(builder: (context) => Pengumuman()),
-      //         );
-      //       },
-      //       child: Text("Read More"),
-      //       color: Colors.blueGrey[50],
-      //       textColor: Colors.black,
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

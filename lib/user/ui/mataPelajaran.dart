@@ -7,11 +7,9 @@ class MataPelajaran extends StatefulWidget {
 
 class _MataPelajaran extends State<MataPelajaran> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.teal[300],
       key: _scaffoldKey,
@@ -49,7 +47,7 @@ class _MataPelajaran extends State<MataPelajaran> {
           children: [
             Container(
               alignment: Alignment.topLeft,
-              padding: EdgeInsets.only(left: 35, top: 50),
+              padding: EdgeInsets.only(left: 35, top: 55),
               child: Text("Mata Pelajaran",
                   style: TextStyle(
                       fontFamily: "Poppins",
@@ -67,7 +65,7 @@ class _MataPelajaran extends State<MataPelajaran> {
                       color: Colors.white)),
             ),
             Column(
-              children: List.generate(4, (index) => cardMata()),
+              children: List.generate(4, (index) => CardMata()),
             )
           ],
         ),
@@ -76,127 +74,135 @@ class _MataPelajaran extends State<MataPelajaran> {
   }
 }
 
-class cardMata extends StatelessWidget {
-  const cardMata({
+class CardMata extends StatelessWidget {
+  const CardMata({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Container(
-          height: 120,
-          width: 180,
-          margin: EdgeInsets.only(left: 10, top: 10),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/img/papan.jpg"), fit: BoxFit.cover),
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: EdgeInsets.only(top: 10, left: 5),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Icon(
-                    Icons.emoji_events_outlined,
-                    color: Colors.white,
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Tugas()));
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Container(
+            height: 120,
+            width: 180,
+            margin: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/img/papan1.jpg"),
+                  fit: BoxFit.cover),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: 10, left: 5),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Icon(
+                      Icons.verified_outlined,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.only(top: 10, left: 5),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Icon(
-                    Icons.more_vert,
-                    color: Colors.white,
+                Container(
+                  padding: EdgeInsets.only(top: 10, left: 5),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Icon(
+                      Icons.more_vert,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          // child: Column(
-          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //   children: <Widget>[
-          //     Container(
-          //       width: 140,
-          //       height: 100,
-          //       child: Center(
-          //         child: Text(
-          //           "Matematika",
-          //           textAlign: TextAlign.left,
-          //           style: TextStyle(
-          //               color: Colors.white,
-          //               fontWeight: FontWeight.bold,
-          //               fontFamily: "Poppins"),
-          //         ),
-          //       ),
-          //     ),
+              ],
+            ),
+            // child: Column(
+            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //   children: <Widget>[
+            //     Container(
+            //       width: 140,
+            //       height: 100,
+            //       child: Center(
+            //         child: Text(
+            //           "Matematika",
+            //           textAlign: TextAlign.left,
+            //           style: TextStyle(
+            //               color: Colors.white,
+            //               fontWeight: FontWeight.bold,
+            //               fontFamily: "Poppins"),
+            //         ),
+            //       ),
+            //     ),
 
-          //   ],
-          // ),
-        ),
-        Container(
-          height: 120,
-          width: 180,
-          margin: EdgeInsets.only(left: 10, top: 20),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/img/papan.jpg"), fit: BoxFit.cover),
-            borderRadius: BorderRadius.all(Radius.circular(20)),
+            //   ],
+            // ),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: EdgeInsets.only(top: 10, left: 5),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Icon(
-                    Icons.emoji_events_outlined,
-                    color: Colors.white,
+          Container(
+            height: 120,
+            width: 180,
+            margin: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/img/papan1.jpg"),
+                  fit: BoxFit.cover),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: 10, left: 5),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Icon(
+                      Icons.verified_outlined,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.only(top: 10, left: 5),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Icon(
-                    Icons.more_vert,
-                    color: Colors.white,
+                Container(
+                  padding: EdgeInsets.only(top: 10, left: 5),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Icon(
+                      Icons.more_vert,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          // child: Column(
-          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //   children: <Widget>[
-          //     Container(
-          //       width: 140,
-          //       height: 100,
-          //       child: Center(
-          //         child: Text(
-          //           "Matematika",
-          //           textAlign: TextAlign.left,
-          //           style: TextStyle(
-          //               color: Colors.white,
-          //               fontWeight: FontWeight.bold,
-          //               fontFamily: "Poppins"),
-          //         ),
-          //       ),
-          //     ),
+              ],
+            ),
+            // child: Column(
+            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //   children: <Widget>[
+            //     Container(
+            //       width: 140,
+            //       height: 100,
+            //       child: Center(
+            //         child: Text(
+            //           "Matematika",
+            //           textAlign: TextAlign.left,
+            //           style: TextStyle(
+            //               color: Colors.white,
+            //               fontWeight: FontWeight.bold,
+            //               fontFamily: "Poppins"),
+            //         ),
+            //       ),
+            //     ),
 
-          //   ],
-          // ),
-        ),
-      ],
+            //   ],
+            // ),
+          ),
+        ],
+      ),
     );
   }
 }

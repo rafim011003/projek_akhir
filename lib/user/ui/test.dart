@@ -58,7 +58,7 @@ class AplikasiKu extends StatelessWidget {
                 Container(
                     width: 150,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
+                        borderRadius: BorderRadius.circular(25),
                         gradient: LinearGradient(
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
@@ -174,7 +174,7 @@ class AplikasiKu extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width:100,
+                  width: 100,
                   child: Card(
                     child: Wrap(
                       children: <Widget>[
@@ -236,7 +236,7 @@ class AplikasiKu extends StatelessWidget {
                 Container(
                     width: 150,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
+                        borderRadius: BorderRadius.circular(25),
                         gradient: LinearGradient(
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
@@ -258,7 +258,7 @@ class AplikasiKu extends StatelessWidget {
                 Container(
                     width: 150,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
+                        borderRadius: BorderRadius.circular(25),
                         gradient: LinearGradient(
                             begin: Alignment.centerLeft,
                             end: Alignment.bottomRight,
@@ -307,7 +307,7 @@ class AplikasiKu extends StatelessWidget {
                           height: 100,
                           width: 75,
                         ),
-                       ListTile(
+                        ListTile(
                           title: Text("apa ya?"),
                           subtitle: Text("ini apa??"),
                         ),
@@ -465,22 +465,21 @@ class AplikasiKu extends StatelessWidget {
             ),
           ),
         ]),
-        bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        bottomNavigationBar:
+            BottomNavigationBar(items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            title: Text('Home'),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            title: Text('Business'),
+            label: 'Business',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            title: Text('School'),
+            label: 'School',
           ),
-         ]
-	),
+        ]),
       ),
     );
   }

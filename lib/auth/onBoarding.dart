@@ -1,349 +1,198 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'signUp.dart';
-// import 'package:projek_akhir/user/ui/home.dart';
+import 'package:project_coba/auth/slider.dart';
 import 'signIn.dart';
-// import 'package:project_coba/network_utils/api.dart';
-import 'package:project_coba/user/ui/uis.dart';
-import 'package:project_coba/user/viewModels/view_models.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-// import 'loginAdmin.dart';
 
 class OnBoarding extends StatefulWidget {
   @override
-  onBoardingState createState() => onBoardingState();
+  OnBoardingState createState() => OnBoardingState();
 }
 
-class onBoardingState extends State<OnBoarding> {
+class OnBoardingState extends State<OnBoarding> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
-  bool _isLoading = false;
-  String msg;
 
-  // final _formKey = GlobalKey<FormState>();
-  // void login() {
-  //   loginUser(email.text, password.text).then((value) {
-  //     setState(() {
-  //       _isLoading = true;
-  //     });
-  //     setState(() {
-  //       if (value == true) {
-  //         // msg = "Success";
-  //         AlertDialog alertDialog = AlertDialog(
-  //           content: Container(
-  //             height: 100.0,
-  //             child: Column(
-  //               children: [
-  //                 Text("Login Berhasil"),
-  //                 RaisedButton(
-  //                   child: Text("OK"),
-  //                   onPressed: () => Navigator.pushAndRemoveUntil(
-  //                     context,
-  //                     MaterialPageRoute(builder: (context) => Home()),
-  //                     (Route<dynamic> route) => false,
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         );
-  //         showDialog(context: context, child: alertDialog);
-  //       } else {
-  //         AlertDialog alertDialog = AlertDialog(
-  //           content: Container(
-  //             height: 100.0,
-  //             child: Column(
-  //               children: [
-  //                 Text("Login gagal"),
-  //                 RaisedButton(
-  //                   child: Text("OK"),
-  //                   onPressed: () => Navigator.pop(context),
-  //                 )
-  //               ],
-  //             ),
-  //           ),
-  //         );
-  //         showDialog(context: context, child: alertDialog);
-  //       }
-  //     });
-  //   });
-  //   setState(() {
-  //     _isLoading = false;
-  //   });
-  // }
+  int _currentPage = 0;
+  PageController _controller = PageController();
 
-  // var emailvalid;
-  // var passwordvalid;
-  // final _scaffoldKey = GlobalKey<ScaffoldState>();
-  // _showMsg(msg) {
-  //   final snackBar = SnackBar(
-  //     content: Text(msg),
-  //     action: SnackBarAction(
-  //       label: 'Close',
-  //       onPressed: () {
-  //         // Some code to undo the change!
-  //       },
-  //     ),
-  //   );
-  //   _scaffoldKey.currentState.showSnackBar(snackBar);
-  // }
+  List<Widget> _pages = [
+    SliderPage(
+      title: "Learn Online",
+      description:
+          "Online learning is being done because of the corono virus pandemic that is endemic in our country and online learning is the government's recommendation",
+      image: "assets/img/png1.png",
+    ),
+    SliderPage(
+      title: "Team Work",
+      description:
+          "here students will learn online automatically students will collaborate and be able to build good teamwork",
+      image: "assets/img/png2.png",
+    ),
+    SliderPage(
+      title: "Take care of health",
+      description:
+          "For students who are doing online learning, it is hoped that they will maintain their health and maintain their diet, and parents must supervise their children well",
+      image: "assets/img/corona.png",
+    ),
+  ];
+
+  _onChanged(int index) {
+    setState(() {
+      _currentPage = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
     return Scaffold(
-      backgroundColor: Colors.blueGrey[900],
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/img/bckgrn1.png"), fit: BoxFit.cover),
-        ),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+      body: Stack(
+        children: [
+          PageView.builder(
+            scrollDirection: Axis.horizontal,
+            controller: _controller,
+            itemCount: _pages.length,
+            onPageChanged: _onChanged,
+            itemBuilder: (context, int index) {
+              return _pages[index];
+            },
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Image.asset(
-                'assets/img/Group.png',
-                width: 200,
-                height: 200,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List<Widget>.generate(_pages.length, (int index) {
+                  return AnimatedContainer(
+                    duration: Duration(milliseconds: 300),
+                    height: 10,
+                    width: (index == _currentPage) ? 30 : 10,
+                    margin: EdgeInsets.symmetric(horizontal: 5, vertical: 30),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: (index == _currentPage)
+                            ? Color(0xfff438b73)
+                            : Color(0xfff438b73).withOpacity(0.5)),
+                  );
+                }),
               ),
-              SizedBox(height: 24.0),
-              Text(
-                "WELCOME",
-                style: TextStyle(
-                    fontSize: 30,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              ),
-              SizedBox(height: 24.0),
-              Text(
-                "The biggest e-learning in Jonggol",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.normal,
-                    color: Colors.white),
-              ),
-              SizedBox(height: 90),
-              Padding(
-                padding: const EdgeInsets.all(50),
-                child: RaisedButton(
-                  hoverColor: Colors.teal,
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        left: 100, right: 100, top: 15, bottom: 15),
-                    child: Text(
-                      'Login with email',
-                      // _isLoading ? 'Proccessing...' : 'LOGIN',
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(
+              InkWell(
+                onTap: () {
+                  _controller.nextPage(
+                      duration: Duration(milliseconds: 800),
+                      curve: Curves.easeInOutQuint);
+                },
+                child: AnimatedContainer(
+                  alignment: Alignment.center,
+                  duration: Duration(milliseconds: 300),
+                  height: 50,
+                  width: (_currentPage == (_pages.length - 1)) ? 100 : 50,
+                  decoration: BoxDecoration(
+                      color: Color(0xfff438b73),
+                      borderRadius: BorderRadius.circular(35)),
+                  child: (_currentPage == (_pages.length - 1))
+                      ? InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SignIn()),
+                            );
+                          },
+                          child: Text(
+                            "Get Started",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: "Poppins",
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      : Icon(
+                          Icons.navigate_next,
+                          size: 50,
                           color: Colors.white,
-                          fontSize: 15.0,
-                          decoration: TextDecoration.none,
-                          fontWeight: FontWeight.normal,
-                          fontFamily: "Poppins"),
-                    ),
-                  ),
-                  color: Colors.teal[300],
-                  disabledColor: Colors.grey,
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(10)),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignIn()),
-                    );
-                    // if (_formKey.currentState.validate()) {
-                    //   login();
-                    //   print('login dipencet');
-                    // }
-                  },
+                        ),
                 ),
               ),
-              Row(
-                children: [
-                  Column(
-                    children: [
-                      // Container(
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.only(top: 20),
-                      //     child: InkWell(
-                      //       onTap: () {
-                      //         Navigator.push(
-                      //             context,
-                      //             new MaterialPageRoute(
-                      //                 builder: (context) => LoginAdmin()));
-                      //       },
-                      //       child: Text(
-                      //         'Sign up',
-                      //         style: TextStyle(
-                      //             color: Colors.white,
-                      //             fontSize: 15.0,
-                      //             decoration: TextDecoration.none,
-                      //             fontWeight: FontWeight.bold,
-                      //             fontFamily: "Poppins"),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // )
-                    ],
-                  ),
-                ],
+              SizedBox(
+                height: 50,
               )
-
-              // Container(
-              //   child: RaisedButton(
-              //     child: Padding(
-              //       padding:
-              //           EdgeInsets.only(left: 125, right: 125, top: 15, bottom: 15),
-              //       child: Text(
-              //         'Login with email',
-              //         // _isLoading ? 'Proccessing...' : 'LOGIN',
-              //         textDirection: TextDirection.ltr,
-              //         style: TextStyle(
-              //             color: Colors.white,
-              //             fontSize: 20.0,
-              //             decoration: TextDecoration.none,
-              //             fontWeight: FontWeight.normal,
-              //             fontFamily: "Alegreya"),
-              //       ),
-              //     ),
-              //     color: Colors.teal[300],
-              //     disabledColor: Colors.grey,
-              //     shape: new RoundedRectangleBorder(
-              //         borderRadius: new BorderRadius.circular(10)),
-              //     onPressed: () {
-              //       Navigator.push(
-              //         context,
-              //         MaterialPageRoute(builder: (context) => Login()),
-              //       );
-              //       // if (_formKey.currentState.validate()) {
-              //       //   login();
-              //       //   print('login dipencet');
-              //       // }
-              //     },
-              //   ),
-              // ),
-              // Expanded(
-              //   child: ListView(
-              //     children: <Widget>[
-              //       Container(
-              //         height: displayHeight(context) * 0.503,
-              //         decoration: BoxDecoration(
-              //           color: Colors.white,
-              //           borderRadius: BorderRadius.only(
-              //               topLeft: Radius.circular(displayWidth(context) * 0.10),
-              //               topRight:
-              //                   Radius.circular(displayWidth(context) * 0.10)),
-              //         ),
-              //         child: Column(
-              //           children: <Widget>[
-              //             Container(
-              //               child: Column(
-              //                 children: <Widget>[
-              //                   SizedBox(
-              //                     height: displayHeight(context) * 0.05,
-              //                   ),
-              //                   InkWell(
-              //                     onTap: () {
-              //                       // _getCurrentLocation();
-              //                       print("dipencet");
-              //                     },
-              //                     child: Container(
-              //                         // padding: EdgeInsets.all(
-              //                         //     displayWidth(context) * 0.30),
-              //                         decoration: BoxDecoration(
-              //                           boxShadow: [
-              //                             BoxShadow(
-              //                               color: Colors.grey.withOpacity(0.5),
-              //                               spreadRadius: 5,
-              //                               blurRadius: 7,
-              //                               offset: Offset(
-              //                                   0, 3), // changes position of shadow
-              //                             ),
-              //                           ],
-              //                           borderRadius: BorderRadius.all(
-              //                               Radius.circular(
-              //                                   displayWidth(context) * 0.29)),
-              //                           gradient: LinearGradient(
-              //                               begin: Alignment.topRight,
-              //                               end: Alignment.bottomLeft,
-              //                               colors: [
-              //                                 Colors.teal[200],
-              //                                 Colors.teal
-              //                               ]),
-              //                         ),
-              //                         child: Padding(
-              //                           padding: EdgeInsets.all(
-              //                               displayWidth(context) * 0.25),
-              //                           child: Text(
-              //                             "Tap Here",
-              //                             style: TextStyle(
-              //                                 fontSize:
-              //                                     displayWidth(context) * 0.05,
-              //                                 color: Colors.white),
-              //                           ),
-              //                         )),
-              //                   ),
-              //                   // if (_currentPosition != null)
-              //                   //   Padding(
-              //                   //     padding: EdgeInsets.all(
-              //                   //       displayWidth(context) * 0.09,
-              //                   //     ),
-              //                   //     child: Column(
-              //                   //       children: <Widget>[
-              //                   //         Text(
-              //                   //           "Lokasi Anda : " + _currentAddress,
-              //                   //           style: TextStyle(
-              //                   //               fontSize:
-              //                   //                   displayWidth(context) * 0.05,
-              //                   //               color: Colors.teal),
-              //                   //         ),
-              //                   //         Text(
-              //                   //           "Anda Telah Absen! Terima Kasih",
-              //                   //           style: TextStyle(color: Colors.teal),
-              //                   //         )
-              //                   //       ],
-              //                   //     ),
-              //                   //   ),
-              //                 ],
-              //               ),
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-            ]),
+            ],
+          ),
+        ],
       ),
+      // backgroundColor: Colors.blueGrey[900],
+      // body: Container(
+      //   decoration: BoxDecoration(
+      //     image: DecorationImage(
+      //         image: AssetImage("assets/img/bckgrn1.png"), fit: BoxFit.cover),
+      //   ),
+      //   child: Column(
+      //       mainAxisAlignment: MainAxisAlignment.center,
+      //       crossAxisAlignment: CrossAxisAlignment.center,
+      //       children: [
+      //         Image.asset(
+      //           'assets/img/Group.png',
+      //           width: 200,
+      //           height: 200,
+      //         ),
+      //         SizedBox(height: 24.0),
+      //         Text(
+      //           "WELCOME",
+      //           style: TextStyle(
+      //               fontSize: 30,
+      //               fontFamily: 'Poppins',
+      //               fontWeight: FontWeight.bold,
+      //               color: Colors.white),
+      //         ),
+      //         SizedBox(height: 24.0),
+      //         Text(
+      //           "The biggest e-learning in Jonggol",
+      //           style: TextStyle(
+      //               fontSize: 20,
+      //               fontFamily: 'Poppins',
+      //               fontWeight: FontWeight.normal,
+      //               color: Colors.white),
+      //         ),
+      //         SizedBox(height: 90),
+      //         Padding(
+      //           padding: const EdgeInsets.all(50),
+      //           child: RaisedButton(
+      //             hoverColor: Colors.teal,
+      //             child: Padding(
+      //               padding: EdgeInsets.only(
+      //                   left: 100, right: 100, top: 15, bottom: 15),
+      //               child: Text(
+      //                 'Login with email',
+      //                 // _isLoading ? 'Proccessing...' : 'LOGIN',
+      //                 textDirection: TextDirection.ltr,
+      //                 style: TextStyle(
+      //                     color: Colors.white,
+      //                     fontSize: 15.0,
+      //                     decoration: TextDecoration.none,
+      //                     fontWeight: FontWeight.normal,
+      //                     fontFamily: "Poppins"),
+      //               ),
+      //             ),
+      //             color: Color(0xfff438b73),
+      //             disabledColor: Colors.grey,
+      //             shape: new RoundedRectangleBorder(
+      //                 borderRadius: new BorderRadius.circular(10)),
+      //             onPressed: () {
+      //               Navigator.push(
+      //                 context,
+      //                 MaterialPageRoute(builder: (context) => SignIn()),
+      //               );
+      //             },
+      //           ),
+      //         ),
+      //         Row(
+      //           children: [
+      //             Column(
+      //               children: [],
+      //             ),
+      //           ],
+      //         )
+      //       ]),
+      // ),
     );
   }
-
-  // void _login() async {
-  //   setState(() {
-  //     _isLoading = true;
-  //   });
-  //   var data = {'email': email, 'password': password};
-
-  //   var res = await Network().authData(data, '/login');
-  //   var body = json.decode(res.body);
-
-  //   if (body['success']) {
-  // SharedPreferences localStorage = await SharedPreferences.getInstance();
-  // localStorage.setString('token', json.encode(body['token']));
-  // localStorage.setString('user', json.encode(body['user']));
-  //     Navigator.push(
-  //       context,
-  //       new MaterialPageRoute(builder: (context) => Home()),
-  //     );
-  //   } else {
-  //     _showMsg(body['message']);
-  //   }
-
-  //   setState(() {
-  //     _isLoading = false;
-  //   });
-  // }
 }
