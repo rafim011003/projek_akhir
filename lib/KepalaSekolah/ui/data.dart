@@ -1,12 +1,14 @@
+part of 'uis.dart';
+
 var images1 = [
-  'assets/img/covid.jpg',
-  'assets/img/covid.jpg',
-  'assets/img/covid.jpg',
+  'assets/img/work.jpg',
+  'assets/img/CARD News.jpg',
+  'assets/img/exam.jpg',
 ];
 var images2 = [
-  'assets/img/rumput.jpg',
-  'assets/img/esl.png',
-  'assets/img/toeic.jpg',
+  'assets/img/work.jpg',
+  'assets/img/ramadhan.jpg',
+  'assets/img/exam.jpg',
 ];
 
 var images3 = [

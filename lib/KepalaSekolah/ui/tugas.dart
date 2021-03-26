@@ -26,13 +26,16 @@ class _Tugas extends State<Tugas> {
                     new EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                 height: 44,
                 width: 44,
-                child: FlatButton(
-                  padding: EdgeInsets.all(0),
-                  color: Colors.white.withOpacity(0.3),
-                  child: Icon(Icons.navigate_before, color: Colors.white),
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0),
+                child: TextButton(
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(EdgeInsets.all(0)),
+                    backgroundColor: MaterialStateProperty.all(
+                        Colors.white.withOpacity(0.3)),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
+                    )),
                   ),
+                  child: Icon(Icons.navigate_before, color: Colors.white),
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -154,7 +157,7 @@ class _Tugas extends State<Tugas> {
                       scrollDirection: Axis.vertical,
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      children: List.generate(7, (index) => ezeeyApp())),
+                      children: List.generate(7, (index) => _EzeeyAppL())),
                 ],
               ),
             ),
@@ -165,47 +168,41 @@ class _Tugas extends State<Tugas> {
   }
 }
 
-class ezeeyApp extends StatefulWidget {
-  final index;
-  const ezeeyApp({
-    Key key,
-    this.index,
-  }) : super(key: key);
+// class _EzeeyAppL extends StatefulWidget {
+//   final index;
+//   const _EzeeyAppL({
+//     Key key,
+//     this.index,
+//   }) : super(key: key);
 
-  @override
-  _EzeeyAppState createState() => _EzeeyAppState();
-}
+//   @override
+//   _EzeeyAppState createState() => _EzeeyAppState();
+// }
 
-class _EzeeyAppState extends State<ezeeyApp> {
-  var list = [
-    "Matematika",
-    "Bahasa Indonesia",
-    "Bahasa Inggris",
-    "Fiqih",
-    "Aqidah",
-    "Pemograman Web",
-    "Pemograman Android"
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => TugasPage()));
-      },
-      child: EzeeyApp(
-        image: Image.asset(
-          "assets/img/notip2.png",
-          width: 40,
-          height: 40,
-          color: Colors.white,
-        ),
-        color: Colors.white38,
-        title: "Integral",
-        hours: "Senin 22 Februari",
-        progress: "25%",
-        percentage: 0.25,
-      ),
-    );
-  }
-}
+// class _EzeeyAppState extends State<_EzeeyAppL> {
+//   var list = [
+//     "Matematika",
+//     "Bahasa Indonesia",
+//     "Bahasa Inggris",
+//     "Fiqih",
+//     "Aqidah",
+//     "Pemograman Web",
+//     "Pemograman Android"
+//   ];
+//   @override
+//   Widget build(BuildContext context) {
+//     return EzeeyApp(
+//       progress: 'Test',
+//       percentage: 75,
+//       image: Image.asset(
+//         "assets/img/muslim.png",
+//         width: 40,
+//         height: 40,
+//         color: Colors.white,
+//       ),
+//       color: Colors.white38,
+//       title: "Kepala Sekolah",
+//       hours: "Senin 22 Februari",
+//     );
+//   }
+// }

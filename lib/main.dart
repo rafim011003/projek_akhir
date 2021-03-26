@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_coba/auth/signIn.dart';
 import 'package:project_coba/splashscreen.dart';
-import 'user/ui/uis.dart';
+import 'KepalaSekolah/ui/uis.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(MyApp());

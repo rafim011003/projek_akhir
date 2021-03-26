@@ -84,7 +84,7 @@ class OnBoardingState extends State<OnBoarding> {
                   alignment: Alignment.center,
                   duration: Duration(milliseconds: 300),
                   height: 50,
-                  width: (_currentPage == (_pages.length - 1)) ? 100 : 50,
+                  width: (_currentPage == (_pages.length - 1)) ? 120 : 50,
                   decoration: BoxDecoration(
                       color: Color(0xfff438b73),
                       borderRadius: BorderRadius.circular(35)),

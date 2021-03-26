@@ -42,8 +42,7 @@ Future getAllKaryawan() async {
 Future getSingleDataKaryawan(String id) async {
   try {
     http.Response hasil = await http.get(
-        Uri.encodeFull(
-            "https://absensi-project.herokuapp.com/api/v1/user/${id}"),
+        Uri.encodeFull("https://absensi-project.herokuapp.com/api/v1/user/$id"),
         headers: {"Accept": "application/json"});
 
     if (hasil.statusCode == 200) {
@@ -62,7 +61,7 @@ Future getSingleDataKaryawan(String id) async {
 
 Future deleteKaryawan(String id) async {
   try {
-    var url = "https://absensi-project.herokuapp.com/api/v1/user/hapus/${id}";
+    var url = "https://absensi-project.herokuapp.com/api/v1/user/hapus/$id";
     var hasil = await http.get(url);
     if (hasil.statusCode == 200) {
       print("Sukses Delete data");

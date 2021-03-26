@@ -1,35 +1,36 @@
-import 'package:project_coba/widgets/theme.dart';
+// import 'package:project_coba/widgets/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
+// import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class EzeeyApp extends StatelessWidget {
   final Image image;
   final String title;
-  final String hours;
-  final String progress;
-  final double percentage;
+  // final String hours;
+  // final String progress;
+  // final double percentage;
   final Color color;
 
   EzeeyApp({
     Key key,
     @required this.image,
     @required this.title,
-    @required this.hours,
-    @required this.percentage,
-    @required this.progress,
+    // @required this.hours,
+    // @required this.percentage,
+    // @required this.progress,
     @required this.color,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 100,
       width: double.infinity,
       padding: EdgeInsets.all(30.0),
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        color: color,
+        color: Colors.teal[400],
       ),
       child: Row(
         children: <Widget>[
@@ -40,22 +41,15 @@ class EzeeyApp extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
+                SizedBox(
+                  height: 10,
+                ),
                 Text(
                   title,
                   style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: EzeeyColors.textDark),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  hours,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal,
-                    color: Color(0xFFF18C8E),
+                    fontSize: 18,
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
@@ -64,37 +58,6 @@ class EzeeyApp extends StatelessWidget {
           SizedBox(
             width: 20,
           ),
-          Row(
-            children: <Widget>[
-              Text(
-                progress,
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.bold,
-                  color: EzeeyColors.textDark,
-                ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Container(
-                decoration:
-                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-                child: CircularPercentIndicator(
-                  backgroundColor: Colors.white,
-                  radius: 43.0,
-                  lineWidth: 2.0,
-                  animation: true,
-                  percent: percentage,
-                  center:
-                      IconButton(icon: Icon(Icons.play_arrow), onPressed: null),
-                  // center: Icon(Icons.play_arrow, color: Color(0xFFF18C8E)),
-                  circularStrokeCap: CircularStrokeCap.round,
-                  progressColor: Color(0xFFF18C8E),
-                ),
-              )
-            ],
-          )
         ],
       ),
     );

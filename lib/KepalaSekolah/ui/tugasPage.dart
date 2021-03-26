@@ -43,13 +43,16 @@ class _TugasPage extends State<TugasPage> {
                     new EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                 height: 44,
                 width: 44,
-                child: FlatButton(
-                  padding: EdgeInsets.all(0),
-                  color: Colors.white.withOpacity(0.3),
-                  child: Icon(Icons.navigate_before, color: Colors.white),
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0),
+                child: TextButton(
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(EdgeInsets.all(0)),
+                    backgroundColor: MaterialStateProperty.all(
+                        Colors.white.withOpacity(0.3)),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
+                    )),
                   ),
+                  child: Icon(Icons.navigate_before, color: Colors.white),
                   onPressed: () {
                     Navigator.pop(context);
                   },

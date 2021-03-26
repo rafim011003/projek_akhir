@@ -1,9 +1,8 @@
 // import 'dart:convert';
 import 'package:project_coba/Animation/FadeAnimation.dart';
 import 'package:flutter/material.dart';
-import 'package:project_coba/KepalaSekolah/showroom.dart';
 import 'package:project_coba/auth/post.dart';
-import 'package:project_coba/user/ui/uis.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 // import 'package:project_coba/KepalaSekolah/showroom.dart';
 // import 'package:project_coba/user/ui/uis.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
@@ -21,6 +20,23 @@ class _SignInState extends State<SignIn> {
   bool _isLoading = false;
   var emailvalid;
   var passwordvalid;
+
+  var styleAlert = AlertStyle(
+    alertPadding: EdgeInsets.all(50),
+    animationType: AnimationType.grow,
+    isCloseButton: false,
+    isOverlayTapDismiss: false,
+    descStyle: TextStyle(fontWeight: FontWeight.normal, fontFamily: 'Poppins'),
+    descTextAlign: TextAlign.center,
+    animationDuration: Duration(milliseconds: 700),
+    alertBorder: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+      side: BorderSide(
+        color: Colors.grey,
+      ),
+    ),
+    alertAlignment: Alignment.center,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -157,13 +173,70 @@ class _SignInState extends State<SignIn> {
                                     ),
                                     FadeAnimation(
                                       2,
-                                      InkWell(
+                                      GestureDetector(
                                         onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      MainBoarding()));
+                                          print('Klick');
+                                          if (_formKey.currentState
+                                              .validate()) {
+                                            setState(() {
+                                              _isLoading = true;
+                                            });
+                                            loginUser(email.text, password.text,
+                                                    context, styleAlert)
+                                                .then((value) {
+                                              setState(() {
+                                                _isLoading = true;
+                                              });
+                                              setState(() {
+                                                if (value == true) {
+                                                  setState(() {
+                                                    _isLoading = true;
+                                                  });
+                                                  print('berhasil login');
+                                                } else if (value == false) {
+                                                  setState(() {
+                                                    _isLoading = true;
+                                                  });
+                                                  print("email udah ada");
+                                                } else {
+                                                  Alert(
+                                                    style: styleAlert,
+                                                    context: context,
+                                                    type: AlertType.error,
+                                                    title: "Login Gagal",
+                                                    desc:
+                                                        "Email atau password yang anda masukan salah!",
+                                                    buttons: [
+                                                      DialogButton(
+                                                        color: Colors.red,
+                                                        child: Text(
+                                                          "Kembali",
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 20),
+                                                        ),
+                                                        onPressed: () => Navigator
+                                                            .pushReplacement(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            SignIn())),
+                                                        width: 120,
+                                                      )
+                                                    ],
+                                                  ).show();
+                                                }
+                                              });
+                                              setState(() {
+                                                _isLoading = false;
+                                              });
+                                            });
+                                            setState(() {
+                                              _isLoading = true;
+                                            });
+                                          }
                                         },
                                         child: Container(
                                           margin: EdgeInsets.only(top: 50.0),
@@ -174,56 +247,14 @@ class _SignInState extends State<SignIn> {
                                             color: Color(0xfff438b73),
                                           ),
                                           child: Center(
-                                            child: RaisedButton(
-                                              onPressed: () {
-                                                if (_formKey.currentState
-                                                    .validate()) {
-                                                  setState(() {
-                                                    _isLoading = true;
-                                                  });
-                                                  loginUser(
-                                                          email.text,
-                                                          password.text,
-                                                          context)
-                                                      .then((value) {
-                                                    setState(() {
-                                                      _isLoading = true;
-                                                    });
-                                                    setState(() {
-                                                      if (value == true) {
-                                                        setState(() {
-                                                          _isLoading = true;
-                                                        });
-                                                        print('berhasil login');
-                                                      } else if (value ==
-                                                          false) {
-                                                        setState(() {
-                                                          _isLoading = true;
-                                                        });
-                                                        print("email udah ada");
-                                                      } else {
-                                                        setState(() {
-                                                          _isLoading = true;
-                                                        });
-                                                        print('Gagal login');
-                                                      }
-                                                    });
-                                                    setState(() {
-                                                      _isLoading = false;
-                                                    });
-                                                  });
-                                                  setState(() {
-                                                    _isLoading = true;
-                                                  });
-                                                }
-                                              },
-                                              child: Text(
-                                                _isLoading ? "Tunggu" : "Login",
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: "Poppins"),
-                                              ),
+                                            child: Text(
+                                              _isLoading
+                                                  ? "Memproses"
+                                                  : "Login",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: "Poppins"),
                                             ),
                                           ),
                                         ),

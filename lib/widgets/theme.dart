@@ -74,6 +74,7 @@ class EzeeyColors {
       backgroundColor: lightBackground,
       primaryColor: lightPrimary,
       accentColor: lightAccent,
+      // ignore: deprecated_member_use
       cursorColor: lightAccent,
       scaffoldBackgroundColor: lightBackground,
       textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme),

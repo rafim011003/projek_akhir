@@ -11,41 +11,15 @@ class _JadwalPelajaran extends State<JadwalPelajaran> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
 
+    int _currentSelected = 0;
+
     return Scaffold(
       backgroundColor: Color(0xfff438b73),
-      key: _scaffoldKey,
-      extendBodyBehindAppBar: true,
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, 100),
-        child: SafeArea(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Container(
-                margin:
-                    new EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                height: 44,
-                width: 44,
-                child: FlatButton(
-                  padding: EdgeInsets.all(0),
-                  color: Colors.white.withOpacity(0.3),
-                  child: Icon(Icons.menu, color: Colors.white),
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0),
-                  ),
-                  onPressed: () => _scaffoldKey.currentState.openDrawer(),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      drawer: Home(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 70),
+              padding: EdgeInsets.only(top: 20),
               height: height + 220,
               child: Column(
                 children: [
@@ -59,7 +33,7 @@ class _JadwalPelajaran extends State<JadwalPelajaran> {
                     ),
                   ),
                   Container(
-                    height: height + 40,
+                    height: height + 93,
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
@@ -77,6 +51,7 @@ class _JadwalPelajaran extends State<JadwalPelajaran> {
                                   7,
                                   (index) => DateWidget(
                                         index: index,
+                                        currentSelected: _currentSelected,
                                       ))),
                         ),
                         Row(
@@ -223,9 +198,11 @@ class LineGen extends StatelessWidget {
 }
 
 class DateWidget extends StatefulWidget {
-  final index;
+  final int index;
+  final int currentSelected;
 
-  const DateWidget({Key key, this.index}) : super(key: key);
+  const DateWidget({Key key, this.index, this.currentSelected})
+      : super(key: key);
   @override
   _DateWidgetState createState() => _DateWidgetState();
 }
@@ -233,6 +210,25 @@ class DateWidget extends StatefulWidget {
 class _DateWidgetState extends State<DateWidget> {
   bool _selectDate = true;
   var list = ["S", "M", "T", "W", "T", "F", "S"];
+
+  void currentSe() {
+    if (widget.currentSelected == widget.index) {
+      setState(() {
+        _selectDate = false;
+      });
+    } else {
+      setState(() {
+        _selectDate = true;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    currentSe();
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
