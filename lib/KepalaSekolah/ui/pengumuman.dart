@@ -36,80 +36,76 @@ class _PengumumanState extends State<Pengumuman>
             end: Alignment.bottomRight,
             colors: [Colors.teal[900], Colors.white]),
       ),
-      child: Column(
+      child: Stack(
         children: [
           Container(
-            height: 400,
+            padding: EdgeInsets.all(30),
+            height: 300,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/img/bglogin.png'),
-                    fit: BoxFit.fill)),
+                    image: AssetImage('assets/img/ann.jpg'), fit: BoxFit.fill)),
           ),
-          Flexible(
-            fit: FlexFit.tight,
-            flex: 1,
-            child: Container(
-                // height: height,
-                width: width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: const Radius.circular(40.0),
-                    topRight: const Radius.circular(40.0),
-                  ),
-                  color: Colors.white,
-                ),
-                child: Scaffold(
-                  backgroundColor: Colors.transparent,
-                  appBar: PreferredSize(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: const Radius.circular(40.0),
-                            topRight: const Radius.circular(40.0),
-                          ),
-                        ),
-                        child: TabBar(
-                          labelPadding: EdgeInsets.symmetric(vertical: 10),
-                          controller: _controller,
-                          indicatorColor: Color(0xfff1fcc79),
-                          labelColor: Colors.black,
-                          tabs: [
-                            Tab(text: 'List'),
-                            Tab(text: 'Create'),
-                          ],
-                        ),
-                      ),
-                      preferredSize: Size.fromHeight(90)),
-                  body: Container(
-                    child: TabBarView(
-                      controller: _controller,
-                      children: [
-                        SingleChildScrollView(
-                          child: ListView.builder(
-                            key: new PageStorageKey('ListUser'),
-                            padding: EdgeInsets.all(30),
-                            scrollDirection: Axis.vertical,
-                            physics: NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: 7,
-                            itemBuilder: (context, index) => EezyApps(),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          child: ListView.builder(
-                            key: new PageStorageKey('ListUser'),
-                            padding: EdgeInsets.all(30),
-                            scrollDirection: Axis.vertical,
-                            physics: NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: 7,
-                            itemBuilder: (context, index) => EezyApps(),
-                          ),
-                        ),
-                      ],
+          Padding(
+            padding: const EdgeInsets.only(top: 250),
+            child: Flexible(
+              fit: FlexFit.loose,
+              flex: 1,
+              child: Container(
+                  // height: height,
+                  width: width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: const Radius.circular(40.0),
+                      topRight: const Radius.circular(40.0),
                     ),
+                    color: Colors.white,
                   ),
-                )),
+                  child: Scaffold(
+                    backgroundColor: Colors.transparent,
+                    appBar: PreferredSize(
+                        child: Container(
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: const Radius.circular(40.0),
+                              topRight: const Radius.circular(40.0),
+                            ),
+                          ),
+                          child: TabBar(
+                            labelPadding: EdgeInsets.symmetric(vertical: 10),
+                            controller: _controller,
+                            indicatorColor: Color(0xfff1fcc79),
+                            labelColor: Colors.black,
+                            tabs: [
+                              Tab(text: 'List'),
+                              Tab(text: 'Create'),
+                            ],
+                          ),
+                        ),
+                        preferredSize: Size.fromHeight(90)),
+                    body: Container(
+                      child: TabBarView(
+                        controller: _controller,
+                        children: [
+                          SingleChildScrollView(
+                            child: ListView.builder(
+                              key: new PageStorageKey('ListUser'),
+                              padding: EdgeInsets.all(30),
+                              scrollDirection: Axis.vertical,
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: 7,
+                              itemBuilder: (context, index) => EezyApps(),
+                            ),
+                          ),
+                          Container(
+                            child: Text('xixi'),
+                          )
+                        ],
+                      ),
+                    ),
+                  )),
+            ),
           ),
         ],
       ),

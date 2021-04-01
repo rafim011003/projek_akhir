@@ -6,7 +6,7 @@ class Profil extends StatefulWidget {
 }
 
 class _Profile extends State<Profil> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   var userLogin;
 
   void user() {
@@ -24,7 +24,7 @@ class _Profile extends State<Profil> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    // double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(

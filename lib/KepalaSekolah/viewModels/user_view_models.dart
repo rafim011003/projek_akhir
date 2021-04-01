@@ -29,7 +29,7 @@ Future listUser({page = 1}) async {
 class UserViewModel {
   Future userGet() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final String userToken = prefs.getString('tokenauto');
+    // final String userToken = prefs.getString('tokenauto');
     final int id = prefs.getInt('idauto');
     final String role = prefs.getString('roleauto');
     final String name = prefs.getString('nameauto');

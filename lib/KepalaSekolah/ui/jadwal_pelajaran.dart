@@ -6,7 +6,7 @@ class JadwalPelajaran extends StatefulWidget {
 }
 
 class _JadwalPelajaran extends State<JadwalPelajaran> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;

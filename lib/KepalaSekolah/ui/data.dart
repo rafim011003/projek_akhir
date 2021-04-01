@@ -2,7 +2,7 @@ part of 'uis.dart';
 
 var images1 = [
   'assets/img/work.jpg',
-  'assets/img/CARD News.jpg',
+  'assets/img/cardnews.png',
   'assets/img/exam.jpg',
 ];
 var images2 = [
